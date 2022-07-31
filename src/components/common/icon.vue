@@ -17,7 +17,7 @@ export default {
     props: ["name", "color", "w", "h"],
     methods: {
         getIcon: function () {
-            return require(`@/assets/img/icon/${this.name}.svg`);
+            return require(`../../assets/img/icon/${this.name}.svg`);
         },
     },
 };

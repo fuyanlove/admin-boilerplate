@@ -1,7 +1,5 @@
 const path = require("path");
-const pkg = require("./package.json");
 const project = require("./project.json");
-const setting = require("./setting.json");
 module.exports = {
     //❤️ Multiple pages ~
     // pages: {
@@ -29,17 +27,7 @@ module.exports = {
     },
 
     //❤️ define path for static files ~
-    publicPath:
-        //FOR Localhost => development
-        (process.env.NODE_ENV === "development" && "/") ||
-        //BY relative path
-        (process.env.STATIC_PATH === "repo" && `/${pkg.name}/`) ||
-        //BY root path or bind a domain
-        (process.env.STATIC_PATH == "root" && "/") ||
-        //BY cdn path
-        (process.env.STATIC_PATH === "cdn" && `${setting.__cdnRoot}`) ||
-        //for lost
-        "/",
+    publicPath: process.env.NODE_ENV === "development" ? "/" : process.env.STATIC_PATH,
 
     //❤️ Webpack configuration
     chainWebpack: (config) => {
