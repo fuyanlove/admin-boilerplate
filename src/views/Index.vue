@@ -1,12 +1,11 @@
 <template>
     <div class="p-index">
-        Index
-        <img src="@/assets/img/test.png" style="width: 32px" />
-        <SvgIcon name="test" color="#f00" w="32" />
+        <DefaultLayout> </DefaultLayout>
     </div>
 </template>
 
 <script>
+import DefaultLayout from "@/layouts/default.vue";
 export default {
     name: "IndexPage",
     props: [],
@@ -16,7 +15,9 @@ export default {
     computed: {},
     methods: {},
     created: function () {},
-    components: {},
+    components: {
+        DefaultLayout,
+    },
 };
 </script>
 
