@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import CommonSidebar from "@/components/common/sidebar.vue";
+import CommonSidebar from "@/components/common/sidebar";
 import CommonNav from "@/components/common/nav.vue";
 import CommonHeader from "@/components/common/header.vue";
 import CommonRoute from "@/components/common/route.vue";
