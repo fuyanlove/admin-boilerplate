@@ -3,38 +3,32 @@ GLOBAL DEFINITION 项目本地全局定义
 🚫 WARNING : 不可删除！
 ***/
 
-// base color
-@blue: #324157;
-@light-blue: #3a71a8;
-@red: #c03639;
-@pink: #e65d6e;
-@green: #30b08f;
-@tiffany: #4ab7bd;
-@yellow: #fec171;
-@panGreen: #30b08f;
+// 颜色
+@color: #3d454d;
+@primary: #0366d6;
+@bg-black: #24292e;
+@bg-gray: #f6f8fa;
+@bg-light: #fafbfc;
+@color-link: #0366d6;
+@border-hr: #e1e4e8;
+@pink: #f39;
+@blue: #409eff;
+@darkblue: #359;
+@grayblue: #7e93ac;
+@border: #e4e7ed;
+@purple: #6f42c1;
+// 头部
+@header-height: 50px;
+@bread-height: 40px;
+// 侧边栏
+@aside-width: 320px;
 
-// sidebar
-@menuText: #bfcbd9;
-@menuActiveText: #409eff;
-@subMenuActiveText: #f4f4f5; // https://github.com/ElemeFE/element/issues/12951
-
-@menuBg: #304156;
-@menuHover: #263445;
-
-@subMenuBg: #1f2d3d;
-@subMenuHover: #001528;
-
-@sideBarWidth: 210px;
-
-// the :export directive is the magic sauce for webpack
-// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
-:export {
-    menuText: @menuText;
-    menuActiveText: @menuActiveText;
-    subMenuActiveText: @subMenuActiveText;
-    menuBg: @menuBg;
-    menuHover: @menuHover;
-    subMenuBg: @subMenuBg;
-    subMenuHover: @subMenuHover;
-    sideBarWidth: @sideBarWidth;
-}
+// 适配
+@smallpc: 1680px; //21寸显示器
+@notebook: 1440px; //笔记本电脑
+@mininote: 1280px; //小屏笔记本
+@ipad: 1133px; //平板，适配到8.3mini6
+@ipad-y: 1023px; //竖屏
+@game: 780px; //游戏内嵌
+@phone: 720px; //手机
+@ip5: 374px; //iphone5超小屏

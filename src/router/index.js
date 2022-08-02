@@ -8,7 +8,6 @@ import {
 // 2.Components
 const Index = () => import("../views/Index.vue");
 
-// 3.Routes
 const routes = [{ path: "/", component: Index }];
 
 // 4.Build An Instance

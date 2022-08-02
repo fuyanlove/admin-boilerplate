@@ -40,8 +40,8 @@ export default {
     },
     data: function () {
         return {
-            isLogin: false,
-            hasPermission: false,
+            isLogin: true,
+            hasPermission: true,
         };
     },
     computed: {},

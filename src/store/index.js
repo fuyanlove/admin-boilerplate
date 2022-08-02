@@ -1,5 +1,6 @@
 // 1.Dependency
 import { createStore } from "vuex";
+import getters from "./getters";
 
 const modulesFiles = require.context("./modules", true, /\.js$/);
 
@@ -13,7 +14,7 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 // 2.Store
 const store = {
     modules,
-    getters: {},
+    getters,
 };
 
 export default createStore(store);
