@@ -9,7 +9,7 @@
                     <CommonRoute></CommonRoute>
                 </CommonHeader>
                 <CommonContent>
-                    <slot></slot>
+                    <router-view />
                 </CommonContent>
             </template>
             <template v-else>
@@ -25,7 +25,7 @@
 
 <script>
 import CommonSidebar from "@/components/common/sidebar";
-import CommonNav from "@/components/common/nav.vue";
+import CommonNav from "@/components/common/nav";
 import CommonHeader from "@/components/common/header.vue";
 import CommonRoute from "@/components/common/route.vue";
 

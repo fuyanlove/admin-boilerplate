@@ -5,17 +5,35 @@ import {
     createWebHashHistory,
 } from "vue-router";
 
-// 2.Components
-const Index = () => import("../views/Index.vue");
+export const constantRoutes = [
+    {
+        path: "/",
+        component: () => import("../views/Index.vue"),
+        redirect: "/dashboard",
+        meta: {
+            title: "首页",
+            icon: "home",
+        },
+        children: [
+            {
+                path: "dashboard",
+                component: () => import("@/views/dashboard/index"),
+                name: "Dashboard",
+                meta: { title: "Dashboard", icon: "test", affix: true },
+            },
+        ],
+    },
+];
 
-const routes = [{ path: "/", component: Index }];
+export const asyncRoutes = [];
 
 // 4.Build An Instance
 const router = createRouter({
     history: createWebHashHistory(), //hash
     // history: createWebHistory(),  //history api
     // base : '/rewrite root',
-    routes,
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes,
 });
 
 export default router;

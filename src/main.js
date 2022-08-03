@@ -14,6 +14,8 @@ import { createHead } from "@vueuse/head";
 const head = createHead();
 app.use(head);
 
+import "./permission";
+
 // 3.Components
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
