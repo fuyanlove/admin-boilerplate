@@ -50,7 +50,7 @@ export default {
 .c-sidebar {
     .w(@aside-width - 40px);
     box-sizing: border-box;
-    padding: 10px;
+    // padding: 10px;
     .pf;
     .z(600);
     left: 0;

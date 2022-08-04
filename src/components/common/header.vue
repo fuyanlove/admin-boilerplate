@@ -1,5 +1,15 @@
 <template>
-    <div class="c-header"></div>
+    <div class="c-header">
+        <div class="c-header-inner">
+            <div class="c-header-logo">
+                <a href="/" class="c-header-logo-link">
+                    <svg-icon class="c-header-logo-icon" name="logo" :w="40" :h="40"></svg-icon>
+                </a>
+            </div>
+            <div class="c-header-nav"></div>
+        </div>
+        <slot></slot>
+    </div>
 </template>
 
 <script>
@@ -17,3 +27,9 @@ export default {
     mounted: function () {},
 };
 </script>
+
+<style lang="less" scoped>
+.c-header {
+    height: @header-height;
+}
+</style>
