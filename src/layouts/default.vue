@@ -8,9 +8,9 @@
                 <CommonHeader>
                     <CommonRoute></CommonRoute>
                 </CommonHeader>
-                <div class="c-common-content" :class="{ 'is-collapse': isCollapse }">
+                <common-content class="c-common-content" :class="{ 'is-collapse': isCollapse }">
                     <router-view />
-                </div>
+                </common-content>
             </template>
             <template v-else>
                 <div class="l-default-adenoid">权限不足</div>
@@ -29,6 +29,7 @@ import CommonSidebar from "@/components/common/sidebar";
 import CommonNav from "@/components/common/nav";
 import CommonHeader from "@/components/common/header.vue";
 import CommonRoute from "@/components/common/route.vue";
+import CommonContent from "@/components/common/content.vue";
 
 export default {
     name: "DefaultLayout",
@@ -38,6 +39,7 @@ export default {
         CommonNav,
         CommonHeader,
         CommonRoute,
+        CommonContent,
     },
     data: function () {
         return {

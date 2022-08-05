@@ -31,5 +31,7 @@ export default {
 <style lang="less" scoped>
 .c-header {
     height: @header-height;
+    display: flex;
+    align-items: center;
 }
 </style>
