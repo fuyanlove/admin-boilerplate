@@ -5,6 +5,8 @@ import {
     createWebHashHistory,
 } from "vue-router";
 
+// import chartsRouter from "./modules/charts";
+
 export const constantRoutes = [
     {
         path: "/",
@@ -23,9 +25,28 @@ export const constantRoutes = [
             },
         ],
     },
+    {
+        path: "/charts",
+        name: "charts",
+        component: () => import("@/views/Index"),
+        meta: {
+            title: "图标",
+            icon: "logo",
+        },
+        children: [
+            {
+                path: "line",
+                component: () => import("@/views/charts/index"),
+                name: "line",
+                meta: { title: "line", icon: "logo", affix: false },
+            },
+        ],
+    },
 ];
 
-export const asyncRoutes = [];
+export const asyncRoutes = [
+    // chartsRouter,
+];
 
 // 4.Build An Instance
 const router = createRouter({

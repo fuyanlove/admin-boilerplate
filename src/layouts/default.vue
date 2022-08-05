@@ -28,7 +28,7 @@ import { mapGetters } from "vuex";
 import CommonSidebar from "@/components/common/sidebar";
 import CommonNav from "@/components/common/nav";
 import CommonHeader from "@/components/common/header.vue";
-import CommonRoute from "@/components/common/route.vue";
+import CommonRoute from "@/components/common/route";
 import CommonContent from "@/components/common/content.vue";
 
 export default {
