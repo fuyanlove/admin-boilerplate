@@ -1,5 +1,8 @@
 <template>
     <div v-if="!item.hidden">
+        <!-- <el-menu
+            :collapse="isCollapse"
+        > -->
         <template
             v-if="
                 hasOneShowingChild(item.children, item) &&
@@ -30,6 +33,7 @@
                 class="nest-menu"
             />
         </el-sub-menu>
+        <!-- </el-menu> -->
     </div>
 </template>
 
@@ -63,7 +67,9 @@ export default {
         // To fix https://github.com/PanJiaChen/vue-admin-template/issues/237
         // TODO: refactor with render function
         this.onlyOneChild = null;
-        return {};
+        return {
+            isCollapse: true,
+        };
     },
     methods: {
         hasOneShowingChild(children = [], parent) {

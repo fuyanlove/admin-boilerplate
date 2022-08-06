@@ -1,9 +1,9 @@
 <template>
-    <div>dashboard</div>
+    <div>test content</div>
 </template>
 
 <script>
 export default {
-    name: "DashboardIndex",
+    name: "TestIndex",
 };
 </script>

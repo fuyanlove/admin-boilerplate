@@ -3,7 +3,7 @@ import store from "./store";
 import { getPageTitle } from "./utils/common";
 
 // const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
-// 权限判定
+// TODO:权限判定
 router.beforeEach(async (to, from, next) => {
     // 设置文档标题
     document.title = getPageTitle(to.meta.title);
@@ -15,7 +15,7 @@ router.beforeEach(async (to, from, next) => {
     next();
 });
 
-// 未登录
+// TODO:未登录
 const isAuthenticated = true;
 router.beforeEach(async (to) => {
     if (

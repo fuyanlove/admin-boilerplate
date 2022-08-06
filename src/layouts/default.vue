@@ -6,8 +6,11 @@
                 <slot name="sidebar"></slot>
             </common-sidebar>
             <common-header><slot name="header"></slot></common-header>
-            <common-route></common-route>
+            <common-route :class="{ 'is-collapse': !isCollapse }"></common-route>
             <common-content :class="{ 'is-collapse': isCollapse }">
+                <template #prepend>
+                    <common-breadcrumb></common-breadcrumb>
+                </template>
                 <router-view v-slot="{ Component, route }">
                     <transition name="slide-fade">
                         <component :is="Component" :key="route.path" />
@@ -29,8 +32,9 @@ import CommonSidebar from "@/components/common/sidebar";
 import CommonNav from "@/components/common/nav";
 import CommonHeader from "@/components/common/header/index.vue";
 import CommonRoute from "@/components/common/route";
+import CommonBreadcrumb from "@/components/common/breadcrumb";
 import CommonContent from "@/components/common/content.vue";
-import DefaultAdenoid from "@/components/layouts/default-adenoid.vue";
+import DefaultAdenoid from "@/components/error/default-adenoid.vue";
 
 export default {
     name: "DefaultLayout",
@@ -40,6 +44,7 @@ export default {
         CommonNav,
         CommonHeader,
         CommonRoute,
+        CommonBreadcrumb,
         CommonContent,
         DefaultAdenoid,
     },

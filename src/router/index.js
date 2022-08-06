@@ -14,8 +14,8 @@ export const constantRoutes = [
         // redirect: "/dashboard", // 重定向首页
         component: () => import("@/views/index/default.vue"),
         meta: {
-            title: "首页",
-            icon: "home",
+            title: "Dashboard",
+            icon: "dashboard",
         },
     },
     ...testRoutes,

@@ -222,6 +222,10 @@ export default {
     right: 0;
     z-index: 99;
     height: @route-height;
+
+    &.is-collapse {
+        left: 0;
+    }
 }
 .layout-navbars-tagsview {
     background-color: #fff;

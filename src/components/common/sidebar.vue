@@ -58,7 +58,7 @@ export default {
     .pf;
     .z(600);
     left: 0;
-    top: @header-height + @bread-height;
+    top: @header-height;
     bottom: 0;
     background-color: #fff;
     border-right: 1px solid #eee;

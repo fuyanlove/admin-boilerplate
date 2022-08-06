@@ -1,20 +1,20 @@
-const dashboard = () => import("@/views/dashboard/index.vue");
+const test = () => import("@/views/test/index.vue");
 
 export default [
     {
         path: "/test1",
         name: "test1",
-        component: dashboard,
+        component: test,
         meta: {
             title: "Test1",
             icon: "test",
         },
         children: [
             {
-                path: "dashboard",
-                name: "dashboard",
-                component: dashboard,
-                meta: { title: "Dashboard", icon: "test", affix: true },
+                path: "square",
+                name: "square",
+                component: test,
+                meta: { title: "Square", icon: "test", affix: true },
             },
         ],
     },
@@ -22,22 +22,22 @@ export default [
         path: "/test2",
         name: "test2",
         meta: {
-            title: "Test1",
-            icon: "logo",
+            title: "Test2",
+            icon: "test",
         },
-        component: dashboard,
+        component: test,
         children: [
             {
                 path: "line",
                 name: "line",
-                component: dashboard,
-                meta: { title: "Line", icon: "logo", affix: false },
+                component: test,
+                meta: { title: "Line", icon: "test", affix: false },
             },
             {
                 path: "circle",
                 name: "circle",
-                component: dashboard,
-                meta: { title: "Circle", icon: "logo", affix: false },
+                component: test,
+                meta: { title: "Circle", icon: "test", affix: false },
             },
         ],
     },

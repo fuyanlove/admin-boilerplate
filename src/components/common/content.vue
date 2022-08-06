@@ -1,6 +1,8 @@
 <template>
     <div class="c-content">
+        <slot name="prepend"></slot>
         <slot></slot>
+        <slot name="append"></slot>
     </div>
 </template>
 
