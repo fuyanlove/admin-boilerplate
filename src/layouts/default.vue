@@ -8,7 +8,13 @@
             <common-header><slot name="header"></slot></common-header>
             <common-content class="c-common-content" :class="{ 'is-collapse': isCollapse }">
                 <common-route></common-route>
-                <router-view />
+
+                <router-view v-slot="{ Component, route }">
+                    <transition name="slide-fade">
+                        <component :is="Component" :key="route.path" />
+                    </transition>
+                </router-view>
+
                 <slot></slot>
             </common-content>
         </template>
@@ -59,6 +65,6 @@ export default {
 };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 @import "@/assets/css/layouts/default.less";
 </style>

@@ -9,6 +9,7 @@ const tagAndTagSpacing = 4; // tagAndTagSpacing
 
 export default {
     name: "ScrollPane",
+    emits: ["scroll"],
     computed: {
         scrollWrapper() {
             return this.$refs.scrollContainer.$refs.wrap$;
