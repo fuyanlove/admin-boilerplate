@@ -6,9 +6,11 @@
                     <svg-icon class="c-header-logo-icon" name="logo" :w="40" :h="40"></svg-icon>
                 </a>
             </div>
-            <div class="c-header-nav"></div>
+            <div class="c-header-nav">
+                <slot></slot>
+            </div>
         </div>
-        <slot></slot>
+        <slot name="rightContent"></slot>
     </div>
 </template>
 
@@ -33,5 +35,11 @@ export default {
     height: @header-height;
     display: flex;
     align-items: center;
+
+    .c-header-inner {
+        display: flex;
+        align-items: center;
+        flex: 1;
+    }
 }
 </style>

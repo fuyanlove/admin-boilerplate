@@ -5,10 +5,9 @@
                 <CommonSidebar>
                     <CommonNav></CommonNav>
                 </CommonSidebar>
-                <CommonHeader>
-                    <CommonRoute></CommonRoute>
-                </CommonHeader>
+                <CommonHeader> </CommonHeader>
                 <common-content class="c-common-content" :class="{ 'is-collapse': isCollapse }">
+                    <CommonRoute></CommonRoute>
                     <router-view />
                 </common-content>
             </template>

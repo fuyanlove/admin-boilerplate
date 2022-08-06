@@ -247,6 +247,8 @@ export default {
             z-index: 0;
             cursor: pointer;
             justify-content: space-between;
+            box-sizing: border-box;
+            outline: none;
             &:hover {
                 background-color: #ebf5ff;
                 color: #409eff;
