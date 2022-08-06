@@ -1,5 +1,4 @@
 const path = require("path");
-const project = require("./config/project.json");
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 module.exports = {
     //❤️ Multiple pages ~
@@ -32,18 +31,6 @@ module.exports = {
 
     //❤️ Webpack configuration
     chainWebpack: (config) => {
-        //💘 html-webpack-plugin ~
-        // Multiple pages disable the block below
-        config.plugin("html").tap((args) => {
-            args[0].meta = {
-                //------设置SEO信息
-                Keywords: project.keys,
-                Description: project.desc,
-            };
-            args[0].title = project.title; //------自动添加标题后缀
-            return args;
-        });
-
         //💝 in-line small imgs ~
         config.module.rule("images").set("parser", {
             dataUrlCondition: {

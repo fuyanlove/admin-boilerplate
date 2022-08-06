@@ -1,0 +1,55 @@
+<template>
+    <el-menu
+        class="c-header-menu"
+        :default-active="activeIndex"
+        mode="horizontal"
+        @select="handleSelect"
+        background-color="#262f3e"
+        text-color="#fff"
+        active-text-color="#ffd04b"
+    >
+        <el-menu-item index="1">Processing Center</el-menu-item>
+        <el-sub-menu index="2">
+            <template #title>Workspace</template>
+            <el-menu-item index="2-1">item one</el-menu-item>
+            <el-menu-item index="2-2">item two</el-menu-item>
+            <el-menu-item index="2-3">item three</el-menu-item>
+            <el-sub-menu index="2-4">
+                <template #title>item four</template>
+                <el-menu-item index="2-4-1">item one</el-menu-item>
+                <el-menu-item index="2-4-2">item two</el-menu-item>
+                <el-menu-item index="2-4-3">item three</el-menu-item>
+            </el-sub-menu>
+        </el-sub-menu>
+        <el-menu-item index="3" disabled>Info</el-menu-item>
+        <el-menu-item index="4">Orders</el-menu-item>
+    </el-menu>
+</template>
+
+<script>
+export default {
+    name: "HeaderMenu",
+    props: [],
+    components: {},
+    data: function () {
+        return {
+            activeIndex: "",
+        };
+    },
+    computed: {},
+    watch: {},
+    methods: {
+        handleSelect() {
+            // console.log(key,path)
+        },
+    },
+    created: function () {},
+    mounted: function () {},
+};
+</script>
+
+<style module lang="less" scoped>
+:deep(.c-header-menu) {
+    border-bottom: none;
+}
+</style>

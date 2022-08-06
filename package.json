@@ -1,5 +1,5 @@
 {
-    "name": "project",
+    "name": "admin",
     "version": "0.1.0",
     "private": true,
     "scripts": {
@@ -10,7 +10,6 @@
         "prepare": "husky install"
     },
     "dependencies": {
-        "@vueuse/head": "^0.7.6",
         "core-js": "^3.8.3",
         "element-plus": "^2.2.5",
         "js-cookie": "^3.0.1",
@@ -22,7 +21,6 @@
         "node-polyfill-webpack-plugin": "^2.0.1",
         "@babel/core": "^7.12.16",
         "@babel/eslint-parser": "^7.12.16",
-        "@babel/plugin-proposal-optional-chaining": "^7.17.12",
         "@vue/cli-plugin-babel": "~5.0.0",
         "@vue/cli-plugin-eslint": "~5.0.0",
         "@vue/cli-service": "~5.0.0",
@@ -46,5 +44,14 @@
     ],
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"
-    }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fuyanlove/admin-boilerplate.git"
+    },
+    "author": "FUYANLOVE (https://fuyan.love)",
+    "contributors": [
+        "iRuxu (https://iruxu.com)",
+        "Kaviilee (https://github.com/Kaviilee)"
+    ]
 }
