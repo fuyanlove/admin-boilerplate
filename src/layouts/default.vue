@@ -2,20 +2,21 @@
     <div class="l-default">
         <template v-if="isLogin">
             <template v-if="hasPermission">
-                <CommonSidebar>
+                <common-sidebar>
                     <CommonNav></CommonNav>
-                </CommonSidebar>
-                <CommonHeader> </CommonHeader>
+                    <slot name="sidebar"></slot>
+                </common-sidebar>
+                <common-header><slot name="header"></slot></common-header>
                 <common-content class="c-common-content" :class="{ 'is-collapse': isCollapse }">
-                    <CommonRoute></CommonRoute>
+                    <common-route></common-route>
                     <router-view />
+                    <slot></slot>
                 </common-content>
             </template>
             <template v-else>
-                <div class="l-default-adenoid">权限不足</div>
+                <default-adenoid />
             </template>
         </template>
-
         <template v-else>
             <div class="l-default-logout">请先登录</div>
         </template>
@@ -29,6 +30,7 @@ import CommonNav from "@/components/common/nav";
 import CommonHeader from "@/components/common/header.vue";
 import CommonRoute from "@/components/common/route";
 import CommonContent from "@/components/common/content.vue";
+import DefaultAdenoid from "@/components/layouts/default-adenoid.vue";
 
 export default {
     name: "DefaultLayout",
@@ -39,11 +41,12 @@ export default {
         CommonHeader,
         CommonRoute,
         CommonContent,
+        DefaultAdenoid,
     },
     data: function () {
         return {
             isLogin: true,
-            hasPermission: true,
+            hasPermission: false,
         };
     },
     computed: {
@@ -61,11 +64,6 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-.c-common-content {
-    margin-left: 0;
-    &.is-collapse {
-        margin-left: @aside-width - 30px;
-    }
-}
+<style scoped lang="less">
+@import "@/assets/css/layouts/default.less";
 </style>

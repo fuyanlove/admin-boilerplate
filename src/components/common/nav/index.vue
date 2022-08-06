@@ -31,3 +31,9 @@ export default {
     },
 };
 </script>
+
+<style scoped lang="less">
+.c-nav {
+    height: 100%;
+}
+</style>

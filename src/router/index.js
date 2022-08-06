@@ -5,12 +5,11 @@ import {
     createWebHashHistory,
 } from "vue-router";
 
-// import chartsRouter from "./modules/charts";
+// 2.Routes
 
 export const constantRoutes = [
     {
         path: "/",
-        component: () => import("../views/Index.vue"),
         redirect: "/dashboard",
         meta: {
             title: "首页",
@@ -28,7 +27,7 @@ export const constantRoutes = [
     {
         path: "/charts",
         name: "charts",
-        component: () => import("@/views/Index"),
+        component: () => import("@/views/charts/index"),
         meta: {
             title: "图标",
             icon: "logo",
