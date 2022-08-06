@@ -1,6 +1,5 @@
 // 获取文档标题
-import settings from "@/settings";
-const { Title } = settings;
+const { Title } = require("@/settings");
 export function getPageTitle(pageTitle) {
     if (pageTitle) {
         return `${pageTitle} - ${Title}`;

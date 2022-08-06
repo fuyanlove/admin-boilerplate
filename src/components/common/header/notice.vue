@@ -22,7 +22,7 @@ export default {
 
 <style scoped lang="less">
 .c-header-notice {
-    color: #eee;
+    color: #c1c6c8;
     font-size: 12px;
     height: @header-height;
     .u-text {

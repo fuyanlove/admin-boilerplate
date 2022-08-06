@@ -8,14 +8,14 @@
 </template>
 
 <script>
-import settings from "@/settings.js";
+import { Title } from "@/settings.js";
 export default {
     name: "HeaderLogo",
     props: [],
     components: {},
     data: function () {
         return {
-            Title: settings.Title,
+            Title,
         };
     },
     computed: {},
