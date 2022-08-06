@@ -52,7 +52,7 @@ export default {
 
 <style lang="less" scoped>
 .c-sidebar {
-    .w(@aside-width - 40px);
+    .w(@aside-width);
     box-sizing: border-box;
     // padding: 10px;
     .pf;
@@ -60,7 +60,7 @@ export default {
     left: 0;
     top: @header-height + @bread-height;
     bottom: 0;
-    background-color: @bg-light;
+    background-color: #fff;
     border-right: 1px solid #eee;
 
     &.without-bread {

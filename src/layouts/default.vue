@@ -6,7 +6,7 @@
                 <slot name="sidebar"></slot>
             </common-sidebar>
             <common-header><slot name="header"></slot></common-header>
-            <common-content class="c-common-content" :class="{ 'is-collapse': isCollapse }">
+            <common-content :class="{ 'is-collapse': isCollapse }">
                 <common-route></common-route>
 
                 <router-view v-slot="{ Component, route }">

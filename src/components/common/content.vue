@@ -19,3 +19,10 @@ export default {
     mounted: function () {},
 };
 </script>
+
+<style scoped lang="less">
+.c-content {
+    background-color: @bg-light;
+    min-height: calc(100vh - @header-height);
+}
+</style>

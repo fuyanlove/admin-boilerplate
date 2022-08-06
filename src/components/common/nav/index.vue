@@ -35,5 +35,8 @@ export default {
 <style scoped lang="less">
 .c-nav {
     height: 100%;
+    .el-menu {
+        border-right: none;
+    }
 }
 </style>
