@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkproject"]=self["webpackChunkproject"]||[]).push([[976],{4976:function(n,r,e){e.r(r),e.d(r,{default:function(){return f}});var t=e(6252);function u(n,r,e,u,c,a){return(0,t.wg)(),(0,t.iD)("div",null,"charts")}var c={name:"ChartsIndex"},a=e(3744);const s=(0,a.Z)(c,[["render",u]]);var f=s}}]);
+//# sourceMappingURL=976.eb950331.js.map
