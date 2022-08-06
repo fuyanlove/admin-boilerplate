@@ -1,6 +1,6 @@
 <template>
     <div class="l-default-adenoid">
-        <img class="u-img" src="@/assets/img/layouts/adenoid.svg" svg-inline />
+        <img class="u-img" src="@/assets/img/error/adenoid.svg" svg-inline />
         <div class="u-text">
             <div class="u-text-cn">抱歉，您没有权限访问该页面</div>
             <div class="u-text-en">Sorry, you don't have access to this page.</div>

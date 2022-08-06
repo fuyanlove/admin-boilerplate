@@ -46,8 +46,6 @@
 -   `.env.production` 环境配置
 -   `.npmrc` 私有包请求域声明
 -   `vue.config.js` vue-cli 配置文件（包含 webpack 配置）
--   `/config`
-    -   `project.json` 项目根设置
 
 ## 项目代码
 
@@ -55,9 +53,9 @@
     -   `favicon.ico` 浏览器窗口迷你图标
     -   `index.html` HTML 模板（存在多页面时可配置多个模板以适配不同端），可在此处添加第三方包，统计代码等
 -   `src`
-    -   `pages` 多页面
     -   `main.js`,`App.vue` 页面入口
     -   `permission.js` 权限逻辑
+    -   `settings.js` 全局配置
     -   `router` 路由文件
         -   `index.js` 路由入口（需要根据请求接口重新生成一个动态路由）
         -   `*.js` 模块化路由，根据业务编写路由参数等
@@ -65,10 +63,8 @@
         -   `default.vue` 默认布局（单左侧边栏+无面包屑+公共头）
     -   `views` 路由对应页
     -   `components` 组件文件
-        -   `nav` 侧边栏导航
-            -   `index.vue` 侧边栏入口，自动关联路由
-            -   `nav-item.vue` 装饰
     -   `store` 数据状态
+    -   `service` 接口请求
     -   `utils` 工具函数
     -   `assets`
         -   `css` 样式文件
