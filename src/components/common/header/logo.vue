@@ -46,6 +46,17 @@ export default {
     .u-title {
         color: #fff;
     }
+    &:hover {
+        .u-title {
+            color: @lightblue;
+        }
+        .u-logo {
+            svg,
+            img {
+                fill: @lightblue;
+            }
+        }
+    }
     position: relative;
     &:after {
         content: "";

@@ -6,9 +6,8 @@
                 <slot name="sidebar"></slot>
             </common-sidebar>
             <common-header><slot name="header"></slot></common-header>
+            <common-route></common-route>
             <common-content :class="{ 'is-collapse': isCollapse }">
-                <common-route></common-route>
-
                 <router-view v-slot="{ Component, route }">
                     <transition name="slide-fade">
                         <component :is="Component" :key="route.path" />

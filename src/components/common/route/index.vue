@@ -1,7 +1,7 @@
 <template>
-    <div id="tags-view-container" class="layout-navbars-tagsview layout-navbars-tagsview-shadow">
+    <div id="tags-view-container" class="c-route layout-navbars-tagsview layout-navbars-tagsview-shadow">
         <scroll-pane ref="scrollPane" @scroll="handleScroll">
-            <ul class="layout-navbars-tagsview-ul tags-style-five">
+            <ul class="layout-navbars-tagsview-ul tags-style-five" v-if="visitedViews">
                 <router-link
                     v-for="tag in visitedViews"
                     ref="tag"
@@ -19,7 +19,7 @@
                         class="layout-navbars-tagsview-ul-li"
                         :class="isActive(tag) ? 'is-active' : ''"
                     >
-                        <span>
+                        <span class="u-text">
                             {{ tag.title }}
                         </span>
                         <svg-icon
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import ScrollPane from "./ScrollPane";
+import ScrollPane from "./scroll-pane";
 import path from "path";
 
 export default {
@@ -127,7 +127,7 @@ export default {
             return false;
         },
         moveToCurrentTag() {
-            const tags = this.$refs.tag;
+            const tags = this.$refs.tag || [];
             this.$nextTick(() => {
                 for (const tag of tags) {
                     if (tag.to.path === this.$route.path) {
@@ -215,11 +215,19 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.c-route {
+    position: fixed;
+    top: @header-height;
+    left: @aside-width;
+    right: 0;
+    z-index: 99;
+    height: @route-height;
+}
 .layout-navbars-tagsview {
     background-color: #fff;
     border-bottom: 1px solid #f1f2f3;
-    position: relative;
-    z-index: 4;
+    // position: relative;
+
     :deep(.el-scrollbar__wrap) {
         overflow-x: auto !important;
     }
@@ -277,6 +285,9 @@ export default {
             }
             .layout-icon-three {
                 display: none;
+            }
+            .u-text {
+                user-select: none;
             }
         }
         .is-active {

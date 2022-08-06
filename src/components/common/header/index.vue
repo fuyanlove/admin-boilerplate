@@ -10,7 +10,9 @@
         </div>
         <slot></slot>
         <div class="c-header-panel">
-            <!-- 用户与国际化切换 -->
+            <!-- 其他 -->
+            <!-- 用户 -->
+            <header-user />
         </div>
     </div>
 </template>
@@ -19,6 +21,7 @@
 import HeaderMenu from "./menu.vue";
 import HeaderNotice from "./notice.vue";
 import HeaderLogo from "./logo.vue";
+import HeaderUser from "./user.vue";
 export default {
     name: "CommonHeader",
     props: [],
@@ -26,6 +29,7 @@ export default {
         HeaderMenu,
         HeaderNotice,
         HeaderLogo,
+        HeaderUser,
     },
     data: function () {
         return {};
@@ -48,7 +52,7 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 9999;
+    z-index: @top-level-zindex;
 }
 .c-header-inner {
     display: flex;

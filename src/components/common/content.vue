@@ -24,7 +24,6 @@ export default {
 .c-content {
     background-color: @bg-light;
     min-height: calc(100vh - @header-height);
-
-    height: 2000px;
+    padding-top: @route-height;
 }
 </style>

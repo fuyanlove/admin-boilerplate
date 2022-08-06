@@ -1,12 +1,13 @@
 <template>
     <div class="c-header-menu">
+        <!-- FIXME:element plus bug，全局变量无法正常穿透子菜单 -->
         <el-menu
             :default-active="activeIndex"
             mode="horizontal"
             @select="handleSelect"
             background-color="#262f3e"
             text-color="#fff"
-            active-text-color="#ffd04b"
+            :active-text-color="lightblue"
         >
             <el-menu-item index="1">Processing Center</el-menu-item>
             <el-sub-menu index="2">
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import { lightblue, headerBgColor } from "@/assets/css/var.less";
 export default {
     name: "HeaderMenu",
     props: [],
@@ -35,6 +37,9 @@ export default {
     data: function () {
         return {
             activeIndex: "",
+
+            lightblue,
+            headerBgColor,
         };
     },
     computed: {},
