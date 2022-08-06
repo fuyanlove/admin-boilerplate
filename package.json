@@ -14,12 +14,12 @@
         "core-js": "^3.8.3",
         "element-plus": "^2.2.5",
         "js-cookie": "^3.0.1",
-        "node-polyfill-webpack-plugin": "^2.0.1",
         "vue": "^3.2.13",
         "vue-router": "^4.0.16",
         "vuex": "^4.0.2"
     },
     "devDependencies": {
+        "node-polyfill-webpack-plugin": "^2.0.1",
         "@babel/core": "^7.12.16",
         "@babel/eslint-parser": "^7.12.16",
         "@babel/plugin-proposal-optional-chaining": "^7.17.12",

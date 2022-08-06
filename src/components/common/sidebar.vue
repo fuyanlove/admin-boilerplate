@@ -11,6 +11,10 @@
             <slot></slot>
         </div>
 
+        <div class="c-sidebar-footer">
+            <slot name="footer"></slot>
+        </div>
+
         <span class="c-sidebar-toggle" @click="toggleCollapse">
             <svg-icon class="u-toggle-icon" name="expand" :class="{ collapse: isCollapse }" :w="20" :h="20"></svg-icon>
         </span>
@@ -96,5 +100,12 @@ export default {
             transform: translateX(0);
         }
     }
+}
+.c-sidebar-inner {
+    height: calc(100% - 80px);
+}
+.c-sidebar-footer {
+    height: 80px;
+    overflow: hidden;
 }
 </style>

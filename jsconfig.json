@@ -10,5 +10,6 @@
         "resolveJsonModule": true,
         "allowSyntheticDefaultImports": true,
         "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
-    }
+    },
+    "exclude": ["node_modules"]
 }

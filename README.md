@@ -1,4 +1,4 @@
-# Vue3 Boilerplate
+# Admin Boilerplate
 
 ## 初始化
 
@@ -25,3 +25,44 @@
 -   `npm install` 安装依赖
 -   `npm run serve` 启动本地服务
 -   `npm run build` 构建
+
+---
+
+# 项目结构
+
+## 非业务关联配置文件
+
+-   `.husky` 自动检查 hooks
+-   `.editorconfig` 编辑器配置
+-   `.eslintrc` js 检查配置
+-   `.prettierrc` 格式化配置
+-   `babel.config.js` babel 编译配置
+-   `jsconfig.json` vscode 增强[notes](https://code.visualstudio.com/docs/languages/jsconfig)
+-   `package.json` 依赖包说明文件
+
+## 业务关联配置文件
+
+-   `.github` github actions 构建与分发任务
+-   `.env.production` 环境配置
+-   `.npmrc` 私有包请求域声明
+-   `vue.config.js` vue-cli 配置文件（包含 webpack 配置）
+-   `/config`
+    -   `project.json` 项目根设置
+
+## 项目代码
+
+-   `public`
+    -   `favicon.ico` 浏览器窗口迷你图标
+    -   `index.html` HTML 模板（存在多页面时可配置多个模板以适配不同端），可在此处添加第三方包，统计代码等
+-   `src`
+    -   `assets`
+        -   `css` 样式文件
+            -   `app.less` 项目根公用样式
+            -   `normalize.less` 浏览器重置样式
+            -   `var.less` 项目级复用全局变量
+        -   `img` 图片文件
+            -   `icon` 项目复用 svg 雪碧图，其它按需引用的非用于组件 svg 请不要放在此目录
+        -   `components` 组件文件
+            -   `nav` 侧边栏导航
+                -   `index.vue` 侧边栏入口，自动关联路由
+                -   `nav-item.vue` 装饰

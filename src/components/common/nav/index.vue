@@ -10,7 +10,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import NavItem from "./navItem.vue";
+import NavItem from "./nav-item.vue";
 export default {
     name: "CommonNav",
     props: [],
