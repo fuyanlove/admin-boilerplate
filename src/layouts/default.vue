@@ -1,24 +1,19 @@
 <template>
     <div class="l-default">
-        <template v-if="isLogin">
-            <template v-if="hasPermission">
-                <common-sidebar>
-                    <CommonNav></CommonNav>
-                    <slot name="sidebar"></slot>
-                </common-sidebar>
-                <common-header><slot name="header"></slot></common-header>
-                <common-content class="c-common-content" :class="{ 'is-collapse': isCollapse }">
-                    <common-route></common-route>
-                    <router-view />
-                    <slot></slot>
-                </common-content>
-            </template>
-            <template v-else>
-                <default-adenoid />
-            </template>
+        <template v-if="hasPermission">
+            <common-sidebar>
+                <CommonNav></CommonNav>
+                <slot name="sidebar"></slot>
+            </common-sidebar>
+            <common-header><slot name="header"></slot></common-header>
+            <common-content class="c-common-content" :class="{ 'is-collapse': isCollapse }">
+                <common-route></common-route>
+                <router-view />
+                <slot></slot>
+            </common-content>
         </template>
         <template v-else>
-            <div class="l-default-logout">请先登录</div>
+            <default-adenoid />
         </template>
     </div>
 </template>
@@ -45,8 +40,8 @@ export default {
     },
     data: function () {
         return {
-            isLogin: true,
-            hasPermission: false,
+            // TODO:权限逻辑
+            hasPermission: true,
         };
     },
     computed: {

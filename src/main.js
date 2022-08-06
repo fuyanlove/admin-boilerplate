@@ -14,9 +14,10 @@ import { createHead } from "@vueuse/head";
 const head = createHead();
 app.use(head);
 
+// 3.Permission
 import "./permission";
 
-// 3.Components
+// 4.Components
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
@@ -28,5 +29,5 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 import svgIcon from "@/utils/svgIcon";
 app.use(svgIcon);
 
-// 3.Mount DOM
+// 5.Mount DOM
 app.mount("#app");

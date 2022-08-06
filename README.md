@@ -55,6 +55,21 @@
     -   `favicon.ico` 浏览器窗口迷你图标
     -   `index.html` HTML 模板（存在多页面时可配置多个模板以适配不同端），可在此处添加第三方包，统计代码等
 -   `src`
+    -   `pages` 多页面
+    -   `main.js`,`App.vue` 页面入口
+    -   `permission.js` 权限逻辑
+    -   `router` 路由文件
+        -   `index.js` 路由入口（需要根据请求接口重新生成一个动态路由）
+        -   `*.js` 模块化路由，根据业务编写路由参数等
+    -   `layouts` 布局文件
+        -   `default.vue` 默认布局（单左侧边栏+无面包屑+公共头）
+    -   `views` 路由对应页
+    -   `components` 组件文件
+        -   `nav` 侧边栏导航
+            -   `index.vue` 侧边栏入口，自动关联路由
+            -   `nav-item.vue` 装饰
+    -   `store` 数据状态
+    -   `utils` 工具函数
     -   `assets`
         -   `css` 样式文件
             -   `app.less` 项目根公用样式
@@ -62,7 +77,3 @@
             -   `var.less` 项目级复用全局变量
         -   `img` 图片文件
             -   `icon` 项目复用 svg 雪碧图，其它按需引用的非用于组件 svg 请不要放在此目录
-        -   `components` 组件文件
-            -   `nav` 侧边栏导航
-                -   `index.vue` 侧边栏入口，自动关联路由
-                -   `nav-item.vue` 装饰

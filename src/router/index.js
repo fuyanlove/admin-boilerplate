@@ -6,46 +6,23 @@ import {
 } from "vue-router";
 
 // 2.Routes
-
+import testRoutes from "./test";
 export const constantRoutes = [
     {
         path: "/",
-        redirect: "/dashboard",
+        name: "index",
+        // redirect: "/dashboard", // 重定向首页
+        component: () => import("@/views/index/default.vue"),
         meta: {
             title: "首页",
             icon: "home",
         },
-        children: [
-            {
-                path: "dashboard",
-                component: () => import("@/views/dashboard/index"),
-                name: "Dashboard",
-                meta: { title: "Dashboard", icon: "test", affix: true },
-            },
-        ],
     },
-    {
-        path: "/charts",
-        name: "charts",
-        component: () => import("@/views/charts/index"),
-        meta: {
-            title: "图标",
-            icon: "logo",
-        },
-        children: [
-            {
-                path: "line",
-                component: () => import("@/views/charts/index"),
-                name: "line",
-                meta: { title: "line", icon: "logo", affix: false },
-            },
-        ],
-    },
+    ...testRoutes,
 ];
 
-export const asyncRoutes = [
-    // chartsRouter,
-];
+// 3.Permission
+export const asyncRoutes = [];
 
 // 4.Build An Instance
 const router = createRouter({

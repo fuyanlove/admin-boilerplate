@@ -4,7 +4,6 @@
         <template #header>
             <!-- 附加到公共头部分 -->
         </template>
-        <template #nav>nav slot</template>
 
         <template #sidebar>
             <!-- 附加到侧边栏部分 -->
