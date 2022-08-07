@@ -15,7 +15,7 @@
             <slot name="footer"></slot>
         </div>
 
-        <span class="c-sidebar-toggle" @click="toggleCollapse">
+        <span class="c-sidebar-toggle" @click="toggleCollapse" title="收起/展开">
             <svg-icon class="u-toggle-icon" name="expand" :class="{ collapse: isCollapse }" :w="20" :h="20"></svg-icon>
         </span>
     </aside>

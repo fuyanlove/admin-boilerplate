@@ -10,10 +10,6 @@ app.use(router);
 import store from "./store/index";
 app.use(store);
 
-import { createHead } from "@vueuse/head";
-const head = createHead();
-app.use(head);
-
 // 3.Permission
 import "./permission";
 

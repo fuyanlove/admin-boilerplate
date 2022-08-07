@@ -59,4 +59,8 @@ export default {
     height: @header-height;
     border-bottom: none;
 }
+.el-menu-item:not(.is-disabled):hover,
+.el-sub-menu .el-sub-menu__title:hover {
+    color: #79bbff !important;
+}
 </style>
