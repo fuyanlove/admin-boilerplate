@@ -2,32 +2,25 @@
     <div id="tags-view-container" class="c-route layout-navbars-tagsview layout-navbars-tagsview-shadow">
         <scroll-pane ref="scrollPane" @scroll="handleScroll">
             <ul class="layout-navbars-tagsview-ul tags-style-five" v-if="visitedViews">
-                <router-link
+                <li
                     v-for="tag in visitedViews"
-                    ref="tag"
                     :key="tag.path"
-                    :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
-                    custom
-                    v-slot="{ navigate }"
+                    role="link"
+                    class="layout-navbars-tagsview-ul-li"
+                    :class="isActive(tag) ? 'is-active' : ''"
+                    @contextmenu.prevent="openMenu(tag, $event)"
+                    @click="onTagClick(tag)"
                 >
-                    <li
-                        @click="navigate"
-                        @contextmenu.prevent="openMenu(tag, $event)"
-                        role="link"
-                        class="layout-navbars-tagsview-ul-li"
-                        :class="isActive(tag) ? 'is-active' : ''"
-                    >
-                        <span class="u-text">
-                            {{ tag.title }}
-                        </span>
-                        <svg-icon
-                            class="layout-navbars-tagsview-ul-li-icon layout-icon-three"
-                            v-if="!isAffix(tag)"
-                            name="ele-Close"
-                            @click.prevent.stop="closeSelectedTag(tag)"
-                        />
-                    </li>
-                </router-link>
+                    <span class="u-text">
+                        {{ tag.title }}
+                    </span>
+                    <svg-icon
+                        class="layout-navbars-tagsview-ul-li-icon layout-icon-three"
+                        v-if="!isAffix(tag)"
+                        name="ele-Close"
+                        @click.prevent.stop="closeSelectedTag(tag)"
+                    />
+                </li>
             </ul>
         </scroll-pane>
         <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
@@ -124,6 +117,9 @@ export default {
                 this.$store.dispatch("tagsView/addView", this.$route);
             }
             return false;
+        },
+        onTagClick(tag) {
+            this.$router.push(tag);
         },
         moveToCurrentTag() {
             const tags = this.$refs.tag || [];

@@ -4,15 +4,13 @@ import { getPageTitle } from "./utils/common";
 
 // const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
 // TODO:权限判定
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to) => {
     // 设置文档标题
     document.title = getPageTitle(to.meta.title);
 
     const accessRoutes = await store.dispatch("permission/generateRoutes", to.meta.roles || []);
 
     router.addRoute(accessRoutes);
-
-    next();
 });
 
 // TODO:未登录
