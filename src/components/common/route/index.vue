@@ -198,8 +198,7 @@ export default {
             } else {
                 this.left = left;
             }
-
-            this.top = e.clientY;
+            this.top = e.clientY - this.$el.getBoundingClientRect().top;
             this.visible = true;
             this.selectedTag = tag;
         },
