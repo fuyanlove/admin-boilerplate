@@ -31,6 +31,11 @@ export default {
             default: true,
         },
     },
+    data() {
+        return {
+            // isCollapse: false,
+        };
+    },
     computed: {
         ...mapGetters({
             sidebar: "sidebar",
@@ -82,8 +87,9 @@ export default {
     }
 
     &--closed {
+        width: 65px;
         transition: 0.2s ease-in-out;
-        transform: translateX(-100%);
+        transform: translateX(0);
 
         .c-sidebar-toggle {
             transition: 0.2s ease-in-out;

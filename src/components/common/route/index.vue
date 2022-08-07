@@ -7,14 +7,13 @@
                     ref="tag"
                     :key="tag.path"
                     :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
-                    @click.middle="!isAffix(tag) ? closeSelectedTag(tag) : ''"
-                    @contextmenu.prevent="openMenu(tag, $event)"
                     custom
                     v-slot="{ navigate }"
                 >
                     <li
                         @click="navigate"
                         @keypress.enter="navigate"
+                        @contextmenu.prevent="openMenu(tag, $event)"
                         role="link"
                         class="layout-navbars-tagsview-ul-li"
                         :class="isActive(tag) ? 'is-active' : ''"
@@ -33,10 +32,10 @@
             </ul>
         </scroll-pane>
         <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
-            <li @click="refreshSelectedTag(selectedTag)">Refresh</li>
-            <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">Close</li>
-            <li @click="closeOthersTags">Close Others</li>
-            <li @click="closeAllTags(selectedTag)">Close All</li>
+            <li @click="refreshSelectedTag(selectedTag)">刷新</li>
+            <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
+            <li @click="closeOthersTags">关闭其他</li>
+            <li @click="closeAllTags(selectedTag)">关闭所有</li>
         </ul>
     </div>
 </template>
@@ -223,8 +222,30 @@ export default {
     z-index: 99;
     height: @route-height;
 
+    .contextmenu {
+        margin: 0;
+        background: #fff;
+        z-index: 3000;
+        position: absolute;
+        list-style-type: none;
+        padding: 5px 0;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 400;
+        color: #333;
+        box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);
+        li {
+            margin: 0;
+            padding: 7px 16px;
+            cursor: pointer;
+            &:hover {
+                background: #eee;
+            }
+        }
+    }
+
     &.is-collapse {
-        left: 0;
+        left: 65px;
     }
 }
 .layout-navbars-tagsview {

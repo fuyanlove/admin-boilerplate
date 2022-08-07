@@ -9,6 +9,17 @@ import {
 import testRoutes from "./test";
 export const constantRoutes = [
     {
+        path: "/redirect",
+        component: () => import("@/layouts/default.vue"),
+        hidden: true,
+        children: [
+            {
+                path: "/redirect/:path(.*)",
+                component: () => import("@/views/redirect"),
+            },
+        ],
+    },
+    {
         path: "/",
         name: "index",
         // redirect: "/dashboard", // 重定向首页

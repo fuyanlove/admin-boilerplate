@@ -7,7 +7,7 @@
             </common-sidebar>
             <common-header><slot name="header"></slot></common-header>
             <common-route :class="{ 'is-collapse': !isCollapse }"></common-route>
-            <common-content :class="{ 'is-collapse': isCollapse }">
+            <common-content :class="{ 'is-collapse': !isCollapse }">
                 <template #prepend>
                     <common-breadcrumb></common-breadcrumb>
                 </template>

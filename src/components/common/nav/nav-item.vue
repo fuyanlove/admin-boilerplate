@@ -1,8 +1,5 @@
 <template>
     <div v-if="!item.hidden">
-        <!-- <el-menu
-            :collapse="isCollapse"
-        > -->
         <template
             v-if="
                 hasOneShowingChild(item.children, item) &&
@@ -12,17 +9,24 @@
         >
             <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
                 <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{ 'submenu-title-noDropdown': !isNest }">
-                    <item
-                        :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"
-                        :title="onlyOneChild.meta.title"
-                    />
+                    <div class="m-nav-item" :title="onlyOneChild.meta.title">
+                        <template v-if="onlyOneChild.meta.icon || (item.meta && item.meta.icon)">
+                            <svg-icon :name="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"></svg-icon>
+                        </template>
+                        <span v-if="onlyOneChild.meta.title">{{ onlyOneChild.meta.title }}</span>
+                    </div>
                 </el-menu-item>
             </app-link>
         </template>
 
         <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
             <template #title>
-                <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title" />
+                <div v-if="item.meta" class="m-nav-item">
+                    <template v-if="item.meta && item.meta.icon">
+                        <svg-icon :name="item.meta && item.meta.icon"></svg-icon>
+                    </template>
+                    <span v-if="item.meta.title">{{ item.meta.title }}</span>
+                </div>
             </template>
             <nav-item
                 v-for="child in item.children"
@@ -33,21 +37,17 @@
                 class="nest-menu"
             />
         </el-sub-menu>
-        <!-- </el-menu> -->
     </div>
 </template>
 
 <script>
 import path from "path";
 import { isExternal } from "@/utils/validate";
-import Item from "./item";
 import AppLink from "./link";
-// import FixiOSBug from "./FixiOSBug";
 
 export default {
     name: "SidebarItem",
-    components: { Item, AppLink },
-    // mixins: [FixiOSBug],
+    components: { AppLink },
     props: {
         // route object
         item: {
@@ -108,3 +108,11 @@ export default {
     },
 };
 </script>
+
+<style lang="less" scoped>
+.m-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+</style>

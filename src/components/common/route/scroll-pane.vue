@@ -1,5 +1,5 @@
 <template>
-    <el-scrollbar ref="scrollContainer" :vertical="false" class="scroll-container" @wheel.prevent="handleScroll">
+    <el-scrollbar ref="scrollContainer" :vertical="false" class="scroll-container">
         <slot />
     </el-scrollbar>
 </template>
@@ -22,11 +22,6 @@ export default {
         this.scrollWrapper.removeEventListener("scroll", this.emitScroll);
     },
     methods: {
-        handleScroll(e) {
-            const eventDelta = e.wheelDelta || -e.deltaY * 40;
-            const $scrollWrapper = this.scrollWrapper;
-            $scrollWrapper.scrollLeft = $scrollWrapper.scrollLeft + eventDelta / 4;
-        },
         emitScroll() {
             this.$emit("scroll");
         },
