@@ -14,7 +14,7 @@ export default [
                 path: "square",
                 name: "square",
                 component: test,
-                meta: { title: "Square", icon: "test", affix: true },
+                meta: { title: "Square", icon: "test", affix: false },
             },
         ],
     },

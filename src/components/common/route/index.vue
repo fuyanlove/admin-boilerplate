@@ -12,7 +12,6 @@
                 >
                     <li
                         @click="navigate"
-                        @keypress.enter="navigate"
                         @contextmenu.prevent="openMenu(tag, $event)"
                         role="link"
                         class="layout-navbars-tagsview-ul-li"
@@ -66,6 +65,7 @@ export default {
     },
     watch: {
         $route() {
+            this.initTags();
             this.addTags();
             this.moveToCurrentTag();
         },
@@ -174,11 +174,11 @@ export default {
         toLastView(visitedViews, view) {
             const latestView = visitedViews.slice(-1)[0];
             if (latestView) {
-                latestView.name != "index" && this.$router.push(latestView.fullPath);
+                this.$router.push(latestView.fullPath);
             } else {
                 // now the default is to redirect to the home page if there is no tags-view,
                 // you can adjust it according to your needs.
-                if (view.name === "Dashboard") {
+                if (view.name === "index") {
                     // to reload home page
                     this.$router.replace({ path: "/redirect" + view.fullPath });
                 } else {
