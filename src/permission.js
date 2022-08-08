@@ -1,17 +1,18 @@
 import router from "./router";
-import store from "./store";
-import { getPageTitle } from "./utils/common";
+// import store from "./store";
+// import { getPageTitle } from "./utils/common";
 
 // const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
 // TODO:权限判定
-router.beforeEach(async (to) => {
-    // 设置文档标题
-    document.title = getPageTitle(to.meta.title);
+// router.beforeEach(async (to) => {
+//     // 设置文档标题
+//     document.title = getPageTitle(to.meta.title);
 
-    const accessRoutes = await store.dispatch("permission/generateRoutes", to.meta.roles || []);
+//     const accessRoutes = await store.dispatch("permission/generateRoutes", to.meta.roles || []);
 
-    router.addRoute(accessRoutes);
-});
+// FIXME:空路由问题原因
+//     router.addRoute(accessRoutes);
+// });
 
 // TODO:未登录
 const isAuthenticated = true;
