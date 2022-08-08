@@ -131,7 +131,7 @@ export default {
                 const { fullPath } = view;
                 this.$nextTick(() => {
                     this.$router.replace({
-                        path: "/redirect" + fullPath,
+                        path: "/__redirect" + fullPath,
                     });
                 });
             });
@@ -164,8 +164,8 @@ export default {
             if (latestView) {
                 this.$router.push(latestView.fullPath);
             } else {
-                if (view.name === "index") {
-                    this.$router.replace({ path: "/redirect" + view.fullPath });
+                if (view.name === "__root__") {
+                    this.$router.replace({ path: "/__redirect" + view.fullPath });
                 } else {
                     this.$router.push("/");
                 }

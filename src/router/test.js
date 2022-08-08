@@ -9,7 +9,7 @@ export default [
             title: "Test1",
             icon: "test",
         },
-        redirect: "/test1/square",
+        // redirect: "/test1/square",
         children: [
             {
                 path: "square",
@@ -27,7 +27,7 @@ export default [
             icon: "test",
         },
         component: test,
-        redirect: "/test2/line",
+        // redirect: "/test2/line",
         children: [
             {
                 path: "line",
@@ -40,7 +40,6 @@ export default [
                 name: "circle",
                 component: test,
                 meta: { title: "Circle", icon: "test", affix: false },
-                hidden: true,
             },
         ],
     },
