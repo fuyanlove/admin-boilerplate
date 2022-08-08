@@ -32,9 +32,7 @@ export default {
         },
     },
     data() {
-        return {
-            // isCollapse: false,
-        };
+        return {};
     },
     computed: {
         ...mapGetters({

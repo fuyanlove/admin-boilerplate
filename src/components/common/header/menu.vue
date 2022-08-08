@@ -63,4 +63,9 @@ export default {
 .el-sub-menu .el-sub-menu__title:hover {
     color: #79bbff !important;
 }
+@media screen and (max-width: @phone) {
+    .c-header-menu {
+        display: none;
+    }
+}
 </style>

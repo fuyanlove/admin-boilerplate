@@ -43,4 +43,9 @@ export default {
         background-color: rgba(124, 135, 142, 0.5);
     }
 }
+@media screen and (max-width: @phone) {
+    .c-header-notice {
+        display: none;
+    }
+}
 </style>
