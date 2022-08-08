@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkadmin"]=self["webpackChunkadmin"]||[]).push([[695],{6695:function(e,t,r){r.r(t),r.d(t,{default:function(){return u}});var n={name:"redirectIndex",mounted(){const{params:e,query:t}=this.$route,{path:r}=e;this.$router.replace({path:"/"+r,query:t})}};const a=n;var u=a}}]);
+//# sourceMappingURL=695.2e35ef30.js.map
