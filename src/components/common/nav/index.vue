@@ -7,6 +7,7 @@
                 :unique-opened="false"
                 :collapse-transition="false"
                 mode="vertical"
+                router
             >
                 <nav-item v-for="route in permissionRoutes" :key="route.path" :item="route" :base-path="route.path" />
             </el-menu>

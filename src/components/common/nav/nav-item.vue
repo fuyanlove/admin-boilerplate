@@ -7,16 +7,14 @@
                 !item.alwaysShow
             "
         >
-            <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
-                <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{ 'submenu-title-noDropdown': !isNest }">
-                    <div class="m-nav-item" :title="onlyOneChild.meta.title">
-                        <template v-if="onlyOneChild.meta.icon || (item.meta && item.meta.icon)">
-                            <svg-icon :name="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"></svg-icon>
-                        </template>
-                        <span v-if="onlyOneChild.meta.title">{{ onlyOneChild.meta.title }}</span>
-                    </div>
-                </el-menu-item>
-            </app-link>
+            <el-menu-item :index="resolvePath(onlyOneChild.path)" :class="{ 'submenu-title-noDropdown': !isNest }">
+                <div class="m-nav-item" :title="onlyOneChild.meta.title">
+                    <template v-if="onlyOneChild.meta.icon || (item.meta && item.meta.icon)">
+                        <svg-icon :name="onlyOneChild.meta.icon || (item.meta && item.meta.icon)"></svg-icon>
+                    </template>
+                    <span v-if="onlyOneChild.meta.title">{{ onlyOneChild.meta.title }}</span>
+                </div>
+            </el-menu-item>
         </template>
 
         <el-sub-menu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
@@ -43,11 +41,8 @@
 <script>
 import path from "path";
 import { isExternal } from "@/utils/validate";
-import AppLink from "./link";
-
 export default {
     name: "SidebarItem",
-    components: { AppLink },
     props: {
         // route object
         item: {
@@ -64,11 +59,8 @@ export default {
         },
     },
     data() {
-        // To fix https://github.com/PanJiaChen/vue-admin-template/issues/237
-        // TODO: refactor with render function
-        this.onlyOneChild = null;
         return {
-            isCollapse: true,
+            onlyOneChild: null,
         };
     },
     methods: {

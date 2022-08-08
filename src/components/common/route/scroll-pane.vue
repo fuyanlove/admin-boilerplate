@@ -25,6 +25,7 @@ export default {
         emitScroll() {
             this.$emit("scroll");
         },
+        // 移动到指定位置
         moveToTarget(currentTag) {
             const $container = this.$refs.scrollContainer.$el;
             const $containerWidth = $container.offsetWidth;

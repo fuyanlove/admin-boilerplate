@@ -23,6 +23,7 @@
                 </li>
             </ul>
         </scroll-pane>
+        <!-- 右键菜单 -->
         <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
             <li @click="refreshSelectedTag(selectedTag)">刷新</li>
             <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
@@ -60,7 +61,6 @@ export default {
         $route() {
             this.initTags();
             this.addTags();
-            this.moveToCurrentTag();
         },
         visible(value) {
             if (value) {
@@ -81,6 +81,7 @@ export default {
         isAffix(tag) {
             return tag.meta && tag.meta.affix;
         },
+        // 迭代所有路由，添加标签
         filterAffixTags(routes, basePath = "/") {
             let tags = [];
             routes.forEach((route) => {
@@ -102,6 +103,7 @@ export default {
             });
             return tags;
         },
+        // 将路由中affix标签添加到已查看的数组中,作为常驻的标签
         initTags() {
             const affixTags = (this.affixTags = this.filterAffixTags(this.routes));
             for (const tag of affixTags) {
@@ -118,24 +120,12 @@ export default {
             }
             return false;
         },
+        // 切换到点击的tag
         onTagClick(tag) {
-            this.$router.push(tag);
+            this.$router.replace(tag);
         },
-        moveToCurrentTag() {
-            const tags = this.$refs.tag || [];
-            this.$nextTick(() => {
-                for (const tag of tags) {
-                    if (tag.to.path === this.$route.path) {
-                        this.$refs.scrollPane.moveToTarget(tag);
-                        // when query is different then update
-                        if (tag.to.fullPath !== this.$route.fullPath) {
-                            this.$store.dispatch("tagsView/updateVisitedView", this.$route);
-                        }
-                        break;
-                    }
-                }
-            });
-        },
+        // ---------- 右键菜单 ----------
+        // 刷新当前标签
         refreshSelectedTag(view) {
             this.$store.dispatch("tagsView/delCachedView", view).then(() => {
                 const { fullPath } = view;
@@ -146,6 +136,7 @@ export default {
                 });
             });
         },
+        // 关闭选中的标签
         closeSelectedTag(view) {
             this.$store.dispatch("tagsView/delView", view).then(({ visitedViews }) => {
                 if (this.isActive(view)) {
@@ -153,12 +144,12 @@ export default {
                 }
             });
         },
+        // 关闭其他标签
         closeOthersTags() {
             this.$router.push(this.selectedTag);
-            this.$store.dispatch("tagsView/delOthersViews", this.selectedTag).then(() => {
-                this.moveToCurrentTag();
-            });
+            this.$store.dispatch("tagsView/delOthersViews", this.selectedTag);
         },
+        // 关闭所有除常驻节点外的标签
         closeAllTags(view) {
             this.$store.dispatch("tagsView/delAllViews").then(({ visitedViews }) => {
                 if (this.affixTags.some((tag) => tag.path === view.path)) {
@@ -167,21 +158,20 @@ export default {
                 this.toLastView(visitedViews, view);
             });
         },
+        // 切换到最后一个节点
         toLastView(visitedViews, view) {
             const latestView = visitedViews.slice(-1)[0];
             if (latestView) {
                 this.$router.push(latestView.fullPath);
             } else {
-                // now the default is to redirect to the home page if there is no tags-view,
-                // you can adjust it according to your needs.
                 if (view.name === "index") {
-                    // to reload home page
                     this.$router.replace({ path: "/redirect" + view.fullPath });
                 } else {
                     this.$router.push("/");
                 }
             }
         },
+        // 打开右键菜单
         openMenu(tag, e) {
             const menuMinWidth = 105;
             const offsetLeft = this.$el.getBoundingClientRect().left; // container margin left

@@ -1,4 +1,6 @@
 // 1.Dependency
+// hidden 如果设置为true，则不会显示在菜单中
+// affix 如果设置为true，则标签不可关闭
 import {
     createRouter,
     // createWebHistory,
@@ -11,7 +13,7 @@ export const constantRoutes = [
     {
         path: "/redirect",
         component: () => import("@/layouts/default.vue"),
-        hidden: true,
+        hidden: true, // 如果设置为true，则不会显示在菜单中
         children: [
             {
                 path: "/redirect/:path(.*)",

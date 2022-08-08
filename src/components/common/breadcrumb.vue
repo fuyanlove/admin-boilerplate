@@ -2,7 +2,7 @@
     <div class="c-breadcrumb">
         <el-breadcrumb :separator-icon="ArrowRight">
             <el-breadcrumb-item class="u-root" :to="{ path: '/' }">Home</el-breadcrumb-item>
-            <el-breadcrumb-item :to="{ path: '/' }" v-for="item in routePath" :key="item">
+            <el-breadcrumb-item :to="{ name: item }" v-for="item in routePath" :key="item">
                 {{ item }}
             </el-breadcrumb-item>
         </el-breadcrumb>
