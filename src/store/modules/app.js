@@ -1,12 +1,12 @@
-import Cookies from "js-cookie";
+import { Local } from "@/utils/storage";
 
 const state = {
     sidebar: {
-        opened: Cookies.get("sidebarStatus") ? !!+Cookies.get("sidebarStatus") : true,
+        opened: true,
         withoutAnimation: false,
     },
     device: "desktop",
-    size: Cookies.get("size") || "medium",
+    size: Local.get("size") || "medium",
 };
 
 const mutations = {
@@ -14,13 +14,13 @@ const mutations = {
         state.sidebar.opened = !state.sidebar.opened;
         state.sidebar.withoutAnimation = false;
         if (state.sidebar.opened) {
-            Cookies.set("sidebarStatus", 1);
+            Local.set("sidebarStatus", 1);
         } else {
-            Cookies.set("sidebarStatus", 0);
+            Local.set("sidebarStatus", 0);
         }
     },
     CLOSE_SIDEBAR: (state, withoutAnimation) => {
-        Cookies.set("sidebarStatus", 0);
+        Local.set("sidebarStatus", 0);
         state.sidebar.opened = false;
         state.sidebar.withoutAnimation = withoutAnimation;
     },
@@ -29,7 +29,16 @@ const mutations = {
     },
     SET_SIZE: (state, size) => {
         state.size = size;
-        Cookies.set("size", size);
+        Local.set("size", size);
+    },
+    SET_SIDEBAR_STATUS: (state, status) => {
+        console.log(status);
+        state.sidebar.opened = status;
+        if (status) {
+            Local.set("sidebarStatus", 1);
+        } else {
+            Local.set("sidebarStatus", 0);
+        }
     },
 };
 

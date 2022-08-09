@@ -15,6 +15,8 @@
 
 <script>
 import DefaultLayout from "@/layouts/default.vue";
+import { mapMutations } from "vuex";
+import { Local } from "@/utils/storage";
 export default {
     name: "App",
     components: {
@@ -23,11 +25,22 @@ export default {
     data: function () {
         return {};
     },
-    computed: {},
-    watch: {},
-    methods: {},
-    created: function () {},
-    mounted: function () {},
+    created() {
+        this.initSidebar();
+    },
+    methods: {
+        ...mapMutations({
+            setSidebarStatus: "app/SET_SIDEBAR_STATUS",
+        }),
+        initSidebar() {
+            const sidebar = Local.get("sidebarStatus");
+            if (window.innerWidth < 768) {
+                this.setSidebarStatus(false);
+            } else {
+                this.setSidebarStatus(sidebar);
+            }
+        },
+    },
 };
 </script>
 
