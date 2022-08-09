@@ -32,7 +32,6 @@ const mutations = {
         Local.set("size", size);
     },
     SET_SIDEBAR_STATUS: (state, status) => {
-        console.log(status);
         state.sidebar.opened = status;
         if (status) {
             Local.set("sidebarStatus", 1);
