@@ -9,13 +9,21 @@ export default [
             title: "Test1",
             icon: "test",
         },
-        // redirect: "/test1/square",
+        redirect: "/test1/square",
         children: [
             {
                 path: "square",
                 name: "square",
                 component: test,
-                meta: { title: "Square", icon: "test", affix: false },
+                meta: {
+                    title: "Square",
+                    icon: "test",
+                    affix: false,
+                    breadcrumbs: [
+                        { name: "测试1", path: "/test1" },
+                        { name: "方形", path: "/test1/square" },
+                    ],
+                },
             },
         ],
     },
@@ -27,19 +35,35 @@ export default [
             icon: "test",
         },
         component: test,
-        // redirect: "/test2/line",
+        redirect: "/test2/line",
         children: [
             {
                 path: "line",
                 name: "line",
                 component: test,
-                meta: { title: "Line", icon: "test", affix: false },
+                meta: {
+                    title: "Line",
+                    icon: "test",
+                    affix: false,
+                    breadcrumbs: [
+                        { name: "测试2", path: "/test2" },
+                        { name: "线形", path: "/test2/line" },
+                    ],
+                },
             },
             {
                 path: "circle",
                 name: "circle",
                 component: test,
-                meta: { title: "Circle", icon: "test", affix: false },
+                meta: {
+                    title: "Circle",
+                    icon: "test",
+                    affix: false,
+                    breadcrumbs: [
+                        { name: "测试2", path: "/test2" },
+                        { name: "圆形", path: "/test2/circle" },
+                    ],
+                },
             },
         ],
     },
