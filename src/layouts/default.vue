@@ -9,10 +9,10 @@
             <common-route :class="{ 'is-collapse': !isCollapse }"></common-route>
             <common-content :class="{ 'is-collapse': !isCollapse }">
                 <template #prepend>
-                    <common-breadcrumb></common-breadcrumb>
+                    <common-breadcrumb v-if="isNotRoot"></common-breadcrumb>
                 </template>
                 <router-view v-slot="{ Component, route }">
-                    <transition name="slide-fade">
+                    <transition>
                         <component :is="Component" :key="route.path" />
                     </transition>
                 </router-view>
@@ -60,6 +60,9 @@ export default {
         }),
         isCollapse() {
             return this.sidebar.opened;
+        },
+        isNotRoot() {
+            return this.$route.name != "__root__";
         },
     },
     watch: {},
