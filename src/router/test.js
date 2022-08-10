@@ -19,10 +19,6 @@ export default [
                     title: "Square",
                     icon: "test",
                     affix: false,
-                    breadcrumbs: [
-                        { name: "测试1", path: "/test1" },
-                        { name: "方形", path: "/test1/square" },
-                    ],
                 },
             },
         ],
@@ -45,10 +41,6 @@ export default [
                     title: "Line",
                     icon: "test",
                     affix: false,
-                    breadcrumbs: [
-                        { name: "测试2", path: "/test2" },
-                        { name: "线形", path: "/test2/line" },
-                    ],
                 },
             },
             {
@@ -59,10 +51,6 @@ export default [
                     title: "Circle",
                     icon: "test",
                     affix: false,
-                    breadcrumbs: [
-                        { name: "测试2", path: "/test2" },
-                        { name: "圆形", path: "/test2/circle" },
-                    ],
                 },
             },
         ],
