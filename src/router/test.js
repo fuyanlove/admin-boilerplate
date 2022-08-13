@@ -55,4 +55,27 @@ export default [
             },
         ],
     },
+    {
+        path: "/test3",
+        name: "test3",
+        component: test,
+        meta: {
+            title: "Test3",
+            icon: "test",
+        },
+        redirect: "/test3/square",
+        children: [
+            {
+                path: "square",
+                name: "square",
+                component: test,
+                meta: {
+                    title: "Square",
+                    icon: "test",
+                    affix: false,
+                },
+            },
+        ],
+        hidden: true,
+    },
 ];
