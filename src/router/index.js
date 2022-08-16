@@ -9,21 +9,11 @@ import {
     // createWebHistory,
     createWebHashHistory,
 } from "vue-router";
+import Layout from "@/layouts/default.vue";
 
 // 2.Routes
 import testRoutes from "./test";
 export const constantRoutes = [
-    {
-        path: "/",
-        name: "__root__",
-        // redirect: "/dashboard", // 重定向首页
-        component: () => import("@/views/index/default.vue"),
-        meta: {
-            title: "Dashboard",
-            icon: "dashboard",
-            affix: true,
-        },
-    },
     {
         path: "/__redirect",
         name: "__redirect__",
@@ -33,6 +23,24 @@ export const constantRoutes = [
             {
                 path: "/__redirect/:path(.*)",
                 component: () => import("@/views/_/index.vue"),
+            },
+        ],
+    },
+    {
+        path: "/",
+        name: "__root__",
+        redirect: "/dashboard", // 重定向首页
+        component: Layout,
+        children: [
+            {
+                path: "/dashboard",
+                name: "dashboard",
+                component: () => import("@/views/index/default.vue"),
+                meta: {
+                    title: "Dashboard",
+                    icon: "dashboard",
+                    affix: true,
+                },
             },
         ],
     },

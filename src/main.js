@@ -10,6 +10,9 @@ app.use(router);
 import store from "./store/index";
 app.use(store);
 
+import Particles from "vue3-particles";
+app.use(Particles);
+
 // 3.Permission
 import "./permission";
 

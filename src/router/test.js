@@ -1,14 +1,11 @@
 const test = () => import("@/views/test/index.vue");
+import Layout from "@/layouts/default.vue";
 
 export default [
     {
         path: "/test1",
         name: "test1",
-        component: test,
-        meta: {
-            title: "Test1",
-            icon: "test",
-        },
+        component: Layout,
         redirect: "/test1/square",
         children: [
             {
@@ -30,7 +27,7 @@ export default [
             title: "Test2",
             icon: "test",
         },
-        component: test,
+        component: Layout,
         redirect: "/test2/line",
         children: [
             {
@@ -55,10 +52,10 @@ export default [
             },
         ],
     },
-    {
+    /* {
         path: "/test3",
         name: "test3",
-        component: test,
+        component: Layout,
         meta: {
             title: "Test3",
             icon: "test",
@@ -77,5 +74,5 @@ export default [
             },
         ],
         hidden: true,
-    },
+    }, */
 ];

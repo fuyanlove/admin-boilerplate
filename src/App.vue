@@ -1,30 +1,14 @@
 <template>
-    <!-- 页面布局方案 -->
-    <DefaultLayout>
-        <template #header>
-            <!-- 附加到公共头部分 -->
-        </template>
-
-        <template #sidebar>
-            <!-- 附加到侧边栏部分 -->
-        </template>
-
-        <!-- 附加到内容部分 -->
-    </DefaultLayout>
+    <div class="app">
+        <router-view />
+    </div>
 </template>
 
 <script>
-import DefaultLayout from "@/layouts/default.vue";
 import { mapMutations } from "vuex";
 import { Local } from "@/utils/storage";
 export default {
     name: "App",
-    components: {
-        DefaultLayout,
-    },
-    data: function () {
-        return {};
-    },
     created() {
         this.initSidebar();
     },
