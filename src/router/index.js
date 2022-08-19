@@ -13,6 +13,7 @@ import Layout from "@/layouts/default.vue";
 
 // 2.Routes
 import testRoutes from "./test";
+import systemRoutes from "./system";
 export const constantRoutes = [
     {
         path: "/__redirect",
@@ -51,6 +52,7 @@ export const constantRoutes = [
         hidden: true,
     },
     ...testRoutes,
+    ...systemRoutes,
 ];
 
 // 3.Permission

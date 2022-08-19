@@ -7,11 +7,11 @@
 
 import { installStandardInterceptors } from "./interceptors.js";
 import axios from "axios";
-const __cms = "https://";
+const { API } = require("@/settings.js");
 
 // cms通用请求接口
 function $cms(options) {
-    let domain = (options && options.domain) || __cms;
+    let domain = (options && options.domain) || API.cms;
     let config = {
         // 同时发送cookie和basic auth
         withCredentials: true,

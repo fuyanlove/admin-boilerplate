@@ -1,5 +1,6 @@
 const path = require("path");
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+const { API } = require("./src/settings");
 module.exports = {
     //❤️ Multiple pages ~
     // pages: {
@@ -20,9 +21,9 @@ module.exports = {
     //⚛️ Proxy ~
     devServer: {
         proxy: {
-            // "/api/cms": {
-            //     target: process.env["DEV_SERVER"] == "true" ? "localhost" : "remote",
-            // },
+            "/api/cms": {
+                target: process.env["DEV_SERVER"] == "true" ? "http://localhost:5120/" : API.cms,
+            },
         },
     },
 
