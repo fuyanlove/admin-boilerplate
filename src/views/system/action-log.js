@@ -2,27 +2,27 @@ import dayjs from "dayjs";
 
 const tableHeader = [
     {
-        label: "用户id",
+        label: "用户",
         prop: "user_id",
         width: "100",
     },
     {
-        label: "概况",
+        label: "描述",
         prop: "desc",
         width: "200",
     },
     {
-        label: "资源id",
+        label: "资源ID",
         prop: "source_id",
         width: "100",
     },
     {
-        label: "ip",
+        label: "IP地址",
         prop: "ip",
         width: "100",
     },
     {
-        label: "ua",
+        label: "User Agent",
         prop: "ua",
     },
     {

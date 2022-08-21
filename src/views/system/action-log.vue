@@ -2,48 +2,45 @@
     <div class="p-action-log c-main">
         <!-- 标题和添加按钮 -->
         <el-row class="m-search" :gutter="20">
-            <el-col :xs="12" :md="8" class="u-info">
-                <el-select v-model="form.method" placeholder="选择请求方式" style="width: 100%" clearable>
-                    <el-option v-for="item in methods" :key="item.value" :value="item.value" :label="item.label">
-                        {{ item.label }} ({{ item.value }})
-                    </el-option>
-                </el-select>
-            </el-col>
-            <el-col :xs="12" :md="8" class="u-info">
-                <el-input v-model="form.source_id" class="u-user" placeholder="输入资源id">
-                    <template #prepend>搜索</template>
+            <!-- TODO: 需要搜索用户列表 -->
+            <el-col :xs="24" :md="12" class="u-info">
+                <div class="u-user">
+                    <el-input v-model="form.user_id" class="u-user" placeholder="请选择">
+                        <template #prepend>用户</template>
+                    </el-input>
+                </div>
+                <div class="u-action">
+                    <el-select v-model="form.method" placeholder="动作" clearable>
+                        <el-option v-for="item in methods" :key="item.value" :value="item.value" :label="item.label">
+                            {{ item.label }} ({{ item.value }})
+                        </el-option>
+                    </el-select>
+                </div>
+                <el-input v-model="form.source_id" class="u-user" placeholder="">
+                    <template #prepend>资源ID</template>
                 </el-input>
             </el-col>
-            <el-col :xs="12" :md="8" class="u-info u-date-picker">
+            <el-col :xs="24" :md="12" class="u-time">
+                <span class="u-label">时间范围：</span>
                 <el-date-picker
-                    class="u-date-item"
+                    class="u-date"
                     v-model="form.start_time"
                     type="datetime"
                     placeholder="选择开始时间"
                 ></el-date-picker>
+                <span class="u-div">-</span>
                 <el-date-picker
-                    class="u-date-item"
+                    class="u-date"
                     v-model="form.end_time"
                     type="datetime"
                     placeholder="选择结束时间"
                 ></el-date-picker>
             </el-col>
-            <!-- TODO: 需要搜索用户列表 -->
-            <el-col :xs="12" :md="8" class="u-info">
-                <el-input v-model="form.user_id" class="u-user" placeholder="输入用户id">
-                    <template #prepend>搜索</template>
-                </el-input>
-            </el-col>
-            <el-col :xs="12" :md="8" class="u-info">
-                <el-input v-model="form.ip" class="u-user" placeholder="输入ip">
-                    <template #prepend>搜索</template>
-                </el-input>
-            </el-col>
+
             <el-col :xs="24" :md="24" class="u-info">
-                <!-- 从path,desc,ua中搜索 -->
                 <el-input
                     v-model="form.search"
-                    placeholder="从path/desc/ua中检索"
+                    placeholder="从IP／用户代理(UA)／描述／路径中检索"
                     class="u-input"
                     @keyup.enter="loadData"
                     clearable
@@ -53,7 +50,7 @@
             </el-col>
         </el-row>
         <!-- 数据表格 -->
-        <el-table :data="data" border style="width: 100%" v-loading="loading" stripe>
+        <el-table :data="data" border v-loading="loading" stripe>
             <el-table-column
                 v-for="header in tableHeader"
                 :key="header.prop"
@@ -68,7 +65,7 @@
         </el-table>
         <el-pagination
             v-if="data.length"
-            class="u-pagination"
+            class="m-pagination"
             v-model:currentPage="pagination.page"
             background
             v-model:pageSize="pagination.limit"
@@ -92,7 +89,6 @@ export default {
                 start_time: "",
                 end_time: "",
                 source_id: "",
-                ip: "",
             },
 
             loading: false,
@@ -119,7 +115,6 @@ export default {
                 start_time: this.form.start_time,
                 end_time: this.form.end_time,
                 source_id: this.form.source_id,
-                ip: this.form.ip,
                 page: this.pagination.page,
                 limit: this.pagination.limit,
             });

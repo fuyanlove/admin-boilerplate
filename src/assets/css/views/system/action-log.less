@@ -1,19 +1,54 @@
 .p-action-log {
     .m-search {
         .u-info {
-            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            .u-user {
+                flex: 1;
+            }
         }
 
-        .u-date-picker {
+        .u-time {
             display: flex;
-            gap: 20px;
-            .u-date-item {
-                flex: 1;
+            align-items: center;
+
+            .u-div {
+                margin: 0 10px;
+                color: #999;
+            }
+        }
+
+        .u-label {
+            .fz(14px);
+            color: #888;
+        }
+
+        .el-col {
+            .mb(10px);
+        }
+    }
+    @media screen and (max-width: @phone) {
+        .el-col {
+            .db !important;
+            & > div {
+                .mb(10px);
+            }
+            .u-div {
+                .none;
             }
         }
     }
 
-    .u-pagination {
+    .el-table {
+        th {
+            background-color: #ecf5ff;
+            color: #81a2c6;
+            font-weight: normal;
+            font-size: 12px;
+        }
+    }
+
+    .m-pagination {
         margin-top: 20px;
         justify-content: center;
     }
