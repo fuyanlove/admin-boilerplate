@@ -17,7 +17,7 @@ function $cms(options) {
         withCredentials: true,
         auth: {
             username: "admin",
-            password: (localStorage && localStorage.getItem("token")) || "",
+            password: (localStorage && localStorage.getItem("Admin_token")) || "",
         },
         baseURL: process.env.NODE_ENV === "production" ? domain : "/",
         headers: {},
