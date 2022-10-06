@@ -10,27 +10,23 @@
             :active-text-color="lightblue"
         >
             <template v-for="(group, groupIndex) in Menu" :key="'group' + groupIndex">
-                <el-sub-menu v-if="group.children" :index="`${groupIndex + 1 + ''}`">
+                <el-sub-menu v-if="group.children" :index="group.path">
                     <template #title>{{ group.title }}</template>
                     <template v-for="(subgroup, subgroupIndex) in group.children" :key="'subgroup' + subgroupIndex">
-                        <el-sub-menu v-if="subgroup.children" :index="`${groupIndex + 1 + '-' + (subgroupIndex + 1)}`">
+                        <el-sub-menu v-if="subgroup.children" :index="subgroup.path">
                             <template #title>{{ subgroup.title }}</template>
                             <el-menu-item
                                 v-for="(item, itemIndex) in subgroup.children"
                                 :key="'item-' + itemIndex"
-                                :index="`${groupIndex + 1 + '-' + (subgroupIndex + 1) + '-' + (itemIndex + 1)}`"
+                                :index="item.path"
                             >
                                 {{ item.title }}</el-menu-item
                             >
                         </el-sub-menu>
-                        <el-menu-item v-else :index="`${groupIndex + 1 + '-' + (subgroupIndex + 1)}`">{{
-                            subgroup.title
-                        }}</el-menu-item>
+                        <el-menu-item v-else :index="subgroup.path">{{ subgroup.title }}</el-menu-item>
                     </template>
                 </el-sub-menu>
-                <el-menu-item v-else :index="`${groupIndex + 1 + ''}`" :disabled="group.disabled">{{
-                    group.title
-                }}</el-menu-item>
+                <el-menu-item v-else :index="group.path" :disabled="group.disabled">{{ group.title }}</el-menu-item>
             </template>
         </el-menu>
     </div>
@@ -56,8 +52,8 @@ export default {
     computed: {},
     watch: {},
     methods: {
-        handleSelect() {
-            // console.log(key,path)
+        handleSelect(path) {
+            window.open(path, "_blank");
         },
     },
     created: function () {},
