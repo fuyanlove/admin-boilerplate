@@ -9,27 +9,33 @@
             text-color="#fff"
             :active-text-color="lightblue"
         >
-            <el-menu-item index="1">Processing Center</el-menu-item>
-            <el-sub-menu index="2">
-                <template #title>Workspace</template>
-                <el-menu-item index="2-1">item one</el-menu-item>
-                <el-menu-item index="2-2">item two</el-menu-item>
-                <el-menu-item index="2-3">item three</el-menu-item>
-                <el-sub-menu index="2-4">
-                    <template #title>item four</template>
-                    <el-menu-item index="2-4-1">item one</el-menu-item>
-                    <el-menu-item index="2-4-2">item two</el-menu-item>
-                    <el-menu-item index="2-4-3">item three</el-menu-item>
+            <template v-for="(group, groupIndex) in Menu" :key="'group' + groupIndex">
+                <el-sub-menu v-if="group.children" :index="`${groupIndex + 1} + ''`">
+                    <template #title>{{ group.title }}</template>
+                    <template v-for="(subgroup, subgroupIndex) in group.children" :key="'subgroup' + subgroupIndex">
+                        <el-sub-menu v-if="subgroup.children" :index="group.name">
+                            <template #title>{{ subgroup.title }}</template>
+                            <el-menu-item
+                                v-for="(item, itemIndex) in subgroup.children"
+                                :key="'item-' + itemIndex"
+                                :index="`${groupIndex + 1 + '-' + (subgroupIndex + 1) + '-' + (itemIndex + 1)}`"
+                                >{{ item.title }}</el-menu-item
+                            >
+                        </el-sub-menu>
+                        <el-menu-item v-else :index="`${groupIndex + 1 + '-' + (subgroupIndex + 1)}`">{{
+                            subgroup.title
+                        }}</el-menu-item>
+                    </template>
                 </el-sub-menu>
-            </el-sub-menu>
-            <el-menu-item index="3" disabled>Info</el-menu-item>
-            <el-menu-item index="4">Orders</el-menu-item>
+                <el-menu-item v-else :index="group.name" :disabled="group.disabled">{{ group.title }}</el-menu-item>
+            </template>
         </el-menu>
     </div>
 </template>
 
 <script>
 import { lightblue, headerBgColor } from "@/assets/css/var.less";
+import { Menu } from "@/settings.js";
 export default {
     name: "HeaderMenu",
     props: [],
@@ -40,6 +46,8 @@ export default {
 
             lightblue,
             headerBgColor,
+
+            Menu,
         };
     },
     computed: {},

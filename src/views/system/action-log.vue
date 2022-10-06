@@ -126,6 +126,7 @@ export default {
                 this.loadData();
             },
             deep: true,
+            immediate: true,
         },
     },
     methods: {

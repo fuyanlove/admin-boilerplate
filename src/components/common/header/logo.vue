@@ -39,6 +39,7 @@ export default {
         margin-right: 8px;
         svg,
         img {
+            display: block;
             max-height: 100%;
             width: 38px;
         }
