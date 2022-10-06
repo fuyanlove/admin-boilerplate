@@ -7,6 +7,7 @@ module.exports = {
         cms: "https://",
     },
 
+    // Menu
     Menu: [
         {
             title: "Menu1",
@@ -38,4 +39,7 @@ module.exports = {
             disabled: true,
         },
     ],
+
+    // Panel
+    Panel: [{ title: "Test", path: "/test", disabled: true }],
 };

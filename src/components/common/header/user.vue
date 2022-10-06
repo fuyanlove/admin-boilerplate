@@ -1,16 +1,19 @@
 <template>
     <div class="c-header-user">
-        <el-dropdown>
+        <el-dropdown @command="handleCommand">
             <el-avatar class="u-avatar" :src="avatar" :size="32">
                 <img src="@/assets/img/common/avatar.png"
             /></el-avatar>
             <template #dropdown>
                 <el-dropdown-menu>
-                    <el-dropdown-item>Action 1</el-dropdown-item>
-                    <el-dropdown-item>Action 2</el-dropdown-item>
-                    <el-dropdown-item>Action 3</el-dropdown-item>
-                    <el-dropdown-item disabled>Action 4</el-dropdown-item>
-                    <el-dropdown-item divided>退出</el-dropdown-item>
+                    <el-dropdown-item
+                        v-for="(item, i) in Panel"
+                        :key="i"
+                        :disabled="item.disabled"
+                        :command="item.path"
+                        >{{ item.title }}</el-dropdown-item
+                    >
+                    <el-dropdown-item divided icon="SwitchButton" @click="exit">退出</el-dropdown-item>
                 </el-dropdown-menu>
             </template>
         </el-dropdown>
@@ -18,6 +21,8 @@
 </template>
 
 <script>
+import { Panel } from "@/settings";
+import User from "@/utils/user";
 export default {
     name: "HeaderUser",
     props: [],
@@ -25,11 +30,19 @@ export default {
     data: function () {
         return {
             avatar: "",
+            Panel,
         };
     },
     computed: {},
     watch: {},
-    methods: {},
+    methods: {
+        handleCommand(path) {
+            window.open(path, "_blank");
+        },
+        exit() {
+            User.destroy();
+        },
+    },
     created: function () {},
     mounted: function () {},
 };

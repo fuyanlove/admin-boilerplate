@@ -1,5 +1,5 @@
 <template>
-    <div class="p-index">默认首屏</div>
+    <div class="p-index">Index</div>
 </template>
 
 <script>
