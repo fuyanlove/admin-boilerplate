@@ -9,50 +9,22 @@ import {
     // createWebHistory,
     createWebHashHistory,
 } from "vue-router";
-import Layout from "@/layouts/default.vue";
+import { filter, flatten } from "lodash";
 
 // 2.Routes
-import testRoutes from "./test";
-import systemRoutes from "./system";
+const files = require.context("./", true, /\.js$/);
+const routesModules = files.keys().reduce((modules, modulePath) => {
+    const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, "$1");
+    const value = files(modulePath);
+    modules[moduleName] = value.default;
+    return modules;
+}, {});
 export const constantRoutes = [
-    {
-        path: "/__redirect",
-        name: "__redirect__",
-        component: () => import("@/layouts/default.vue"),
-        hidden: true, // 如果设置为true，则不会显示在菜单中
-        children: [
-            {
-                path: "/__redirect/:path(.*)",
-                component: () => import("@/views/_/index.vue"),
-            },
-        ],
-    },
-    {
-        path: "/",
-        name: "__root__",
-        redirect: "/dashboard", // 重定向首页
-        component: Layout,
-        children: [
-            {
-                path: "/dashboard",
-                name: "dashboard",
-                component: () => import("@/views/index/default.vue"),
-                meta: {
-                    title: "Dashboard",
-                    icon: "dashboard",
-                    affix: true,
-                },
-            },
-        ],
-    },
-    {
-        path: "/login",
-        name: "login",
-        component: () => import("@/views/account/login.vue"),
-        hidden: true,
-    },
-    ...testRoutes,
-    ...systemRoutes,
+    ...flatten(
+        filter(routesModules, (module) => {
+            return module;
+        })
+    ),
 ];
 
 // 3.Permission

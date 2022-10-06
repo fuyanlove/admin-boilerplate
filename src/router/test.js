@@ -1,17 +1,14 @@
-const test = () => import("@/views/test/index.vue");
-import Layout from "@/layouts/default.vue";
-
 export default [
     {
         path: "/test1",
         name: "test1",
-        component: Layout,
+        component: () => import("@/layouts/default.vue"),
         redirect: "/test1/square",
         children: [
             {
                 path: "square",
                 name: "square",
-                component: test,
+                component: () => import("@/views/test/index.vue"),
                 meta: {
                     title: "Square",
                     icon: "test",
@@ -27,13 +24,13 @@ export default [
             title: "Test2",
             icon: "test",
         },
-        component: Layout,
+        component: () => import("@/layouts/default.vue"),
         redirect: "/test2/line",
         children: [
             {
                 path: "line",
                 name: "line",
-                component: test,
+                component: () => import("@/views/test/index.vue"),
                 meta: {
                     title: "Line",
                     icon: "test",
@@ -43,7 +40,7 @@ export default [
             {
                 path: "circle",
                 name: "circle",
-                component: test,
+                component: () => import("@/views/test/index.vue"),
                 meta: {
                     title: "Circle",
                     icon: "test",

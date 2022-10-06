@@ -41,7 +41,7 @@ export default {
         img {
             display: block;
             max-height: 100%;
-            width: 38px;
+            width: 32px;
         }
     }
     .u-title {
