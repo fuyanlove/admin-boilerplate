@@ -2,12 +2,24 @@
     <div class="p-action-log c-main">
         <!-- 标题和添加按钮 -->
         <el-row class="m-search" :gutter="20">
-            <!-- TODO: 需要搜索用户列表 -->
             <el-col :xs="24" :md="12" class="u-info">
                 <div class="u-user">
-                    <el-input v-model="form.user_id" class="u-user" placeholder="请选择">
-                        <template #prepend>用户</template>
-                    </el-input>
+                    <el-select
+                        placeholder="用户"
+                        v-model="form.user_id"
+                        style="width: 100%"
+                        filterable
+                        remote
+                        :remote-method="remoteMethod"
+                        clearable
+                    >
+                        <el-option
+                            v-for="item in userList"
+                            :key="item.id"
+                            :label="item.username"
+                            :value="item.id"
+                        ></el-option>
+                    </el-select>
                 </div>
                 <div class="u-action">
                     <el-select v-model="form.method" placeholder="动作" clearable>
@@ -51,6 +63,12 @@
         </el-row>
         <!-- 数据表格 -->
         <el-table :data="data" border v-loading="loading" stripe>
+            <el-table-column label="用户" prop="user_id" class-name="u-username" width="150" show-overflow-tooltip>
+                <template #default="{ row }">
+                    <!-- <img class="u-avatar" v-if="row.user_info" :src="avatarUrl(row.user_info.avatar)" :alt="row.user_info.username" /> -->
+                    <span v-if="row.user_info">{{ row.user_info.username || row.user_id }}</span>
+                </template>
+            </el-table-column>
             <el-table-column
                 v-for="header in tableHeader"
                 :key="header.prop"
@@ -77,6 +95,7 @@
 
 <script>
 import { getActionLogs } from "@/service/system";
+import { getAccountList } from "@/service/account";
 import actionLog from "./action-log";
 import { removeEmpty } from "@/utils";
 export default {
@@ -89,6 +108,7 @@ export default {
                 start_time: "",
                 end_time: "",
                 source_id: "",
+                user_id: "",
             },
 
             loading: false,
@@ -99,6 +119,8 @@ export default {
                 limit: 10,
                 total: 0,
             },
+
+            userList: [],
         };
     },
     computed: {
@@ -115,6 +137,7 @@ export default {
                 start_time: this.form.start_time,
                 end_time: this.form.end_time,
                 source_id: this.form.source_id,
+                user_id: this.form.user_id,
                 page: this.pagination.page,
                 limit: this.pagination.limit,
             });
@@ -140,6 +163,15 @@ export default {
                 .finally(() => {
                     this.loading = false;
                 });
+        },
+        remoteMethod(val) {
+            getAccountList({
+                search: val,
+                page: 1,
+                limit: 10,
+            }).then((res) => {
+                this.userList = res.data.data.list || [];
+            });
         },
     },
 };

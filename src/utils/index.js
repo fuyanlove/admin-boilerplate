@@ -38,7 +38,7 @@ export function avatarUrl(url) {
     if (url) {
         return url;
     }
-    return "/logo.svg";
+    return require("../assets/img/common/logo.svg");
 }
 
 /**

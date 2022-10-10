@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 
 const tableHeader = [
-    {
-        label: "用户",
-        prop: "user_id",
-        width: "100",
-    },
+    // {
+    //     label: "用户",
+    //     prop: "user_id",
+    //     width: "100",
+    // },
     {
         label: "描述",
         prop: "desc",
