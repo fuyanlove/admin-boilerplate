@@ -29,6 +29,15 @@ export default [
             },
         ],
     },
+    {
+        path: "/login",
+        name: "login",
+        component: () => import("@/views/account/login.vue"),
+        hidden: true,
+        meta: {
+            isPublic: true,
+        },
+    },
     // { path: "/:pathMatch(.*)*", name: "NotFound", component: () => import("@/views/_/NotFound.vue") },
     // { path: "/forbidden", name: "NotAuthenticated", component: () => import("@/views/_/NotAuthenticated.vue") },
 ];

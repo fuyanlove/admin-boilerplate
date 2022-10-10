@@ -10,6 +10,7 @@ import {
     createWebHashHistory,
 } from "vue-router";
 import { filter, flatten } from "lodash";
+import User from "@/utils/user.js";
 
 // 2.Routes
 const files = require.context("./", true, /\.js$/);
@@ -37,6 +38,16 @@ const router = createRouter({
     // base : '/rewrite root',
     scrollBehavior: () => ({ y: 0 }),
     routes: constantRoutes,
+});
+
+router.beforeEach((to, from, next) => {
+    const isLogin = User.isLogin();
+
+    if (!isLogin && !to.meta.isPublic) {
+        next({ path: `/login?redirect=${to.path}` });
+    } else {
+        next();
+    }
 });
 
 export default router;

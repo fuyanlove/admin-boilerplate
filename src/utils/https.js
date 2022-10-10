@@ -16,8 +16,8 @@ function $cms(options) {
         // 同时发送cookie和basic auth
         withCredentials: true,
         auth: {
-            username: (localStorage && localStorage.getItem("token")) || "",
-            password: "cms common request",
+            username: "admin",
+            password: (localStorage && localStorage.getItem("token")) || "",
         },
         baseURL: process.env.NODE_ENV === "production" ? domain : "/",
         headers: {},

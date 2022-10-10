@@ -12,9 +12,9 @@
                     <common-breadcrumb v-if="isNotRoot"></common-breadcrumb>
                 </template>
                 <router-view v-slot="{ Component, route }">
-                    <transition>
+                    <keep-alive :include="keepAliveList">
                         <component :is="Component" :key="route.path" />
-                    </transition>
+                    </keep-alive>
                 </router-view>
 
                 <slot></slot>
@@ -52,6 +52,8 @@ export default {
         return {
             // TODO:权限逻辑
             hasPermission: true,
+
+            keepAliveList: [],
         };
     },
     computed: {
@@ -65,7 +67,17 @@ export default {
             return this.$route.name != "__root__";
         },
     },
-    watch: {},
+    watch: {
+        $route: {
+            deep: true,
+            immediate: true,
+            handler(to) {
+                if (to.meta.keepAlive && this.keepAliveList.indexOf(to.name) == -1) {
+                    this.keepAliveList.push(to.name);
+                }
+            },
+        },
+    },
     methods: {},
     created: function () {},
     mounted: function () {},

@@ -1,4 +1,5 @@
-import { Local } from "@/utils/storage";
+import { Local, Session } from "@/utils/storage";
+import { getGroupList } from "@/service/account";
 
 const state = {
     sidebar: {
@@ -7,6 +8,8 @@ const state = {
     },
     device: "desktop",
     size: Local.get("size") || "medium",
+
+    userGroup: [], // 用户组
 };
 
 const mutations = {
@@ -39,6 +42,9 @@ const mutations = {
             Local.set("sidebarStatus", 0);
         }
     },
+    SET_USER_GROUP: (state, userGroup) => {
+        state.userGroup = userGroup;
+    },
 };
 
 const actions = {
@@ -53,6 +59,25 @@ const actions = {
     },
     setSize({ commit }, size) {
         commit("SET_SIZE", size);
+    },
+    loadGroupList({ commit }, refresh) {
+        // 需要重新加载
+        if (refresh) {
+            Session.remove("groupList");
+        }
+        try {
+            const groupList = Session.get("groupList");
+            if (groupList) {
+                commit("SET_USER_GROUP", groupList);
+            } else {
+                getGroupList().then((res) => {
+                    commit("SET_USER_GROUP", res.data.data);
+                    Session.set("groupList", res.data.data);
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
     },
 };
 

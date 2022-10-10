@@ -1,5 +1,6 @@
 // project less root
 @import "./normalize.less";
+@import "./theme/element.less";
 
 #app {
     height: 100%;
@@ -11,4 +12,16 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
     background-color: #fff;
     border-radius: 6px;
+}
+@media screen and (max-width: @phone) {
+    .c-main {
+        margin: 0;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .el-message-box {
+        width: 60% !important;
+    }
 }

@@ -1,19 +1,20 @@
 <template>
     <div class="c-header-user">
-        <el-dropdown @command="handleCommand">
-            <el-avatar class="u-avatar" :src="avatar" :size="32">
+        <el-dropdown>
+            <!-- <el-avatar class="u-avatar" :src="avatar" :size="32">
                 <img src="@/assets/img/common/avatar.png"
-            /></el-avatar>
+            /></el-avatar> -->
+            <span v-if="user" class="u-name">
+                <el-icon><User /></el-icon>
+                {{ user.username }}
+            </span>
             <template #dropdown>
                 <el-dropdown-menu>
-                    <el-dropdown-item
-                        v-for="(item, i) in Panel"
-                        :key="i"
-                        :disabled="item.disabled"
-                        :command="item.path"
-                        >{{ item.title }}</el-dropdown-item
-                    >
-                    <el-dropdown-item divided icon="SwitchButton" @click="exit">退出</el-dropdown-item>
+                    <!-- <el-dropdown-item>Action 1</el-dropdown-item>
+                    <el-dropdown-item>Action 2</el-dropdown-item>
+                    <el-dropdown-item>Action 3</el-dropdown-item>
+                    <el-dropdown-item divided disabled>Action 4</el-dropdown-item> -->
+                    <el-dropdown-item @click="logout">退出</el-dropdown-item>
                 </el-dropdown-menu>
             </template>
         </el-dropdown>
@@ -21,7 +22,6 @@
 </template>
 
 <script>
-import { Panel } from "@/settings";
 import User from "@/utils/user";
 export default {
     name: "HeaderUser",
@@ -30,31 +30,35 @@ export default {
     data: function () {
         return {
             avatar: "",
-            Panel,
+            user: User.getInfo(),
         };
     },
-    computed: {},
-    watch: {},
     methods: {
-        handleCommand(path) {
-            window.open(path, "_blank");
-        },
-        exit() {
-            User.destroy();
+        logout() {
+            User.logout();
+            this.$router.push("/login");
         },
     },
-    created: function () {},
-    mounted: function () {},
 };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 .c-header-user {
-    padding: 0 10px;
+    padding: 0 20px;
     :deep(.u-avatar) {
         background-color: #fff;
         padding: 5px;
     }
     cursor: pointer;
+
+    .u-name {
+        color: #fff;
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        i {
+            .mr(5px);
+        }
+    }
 }
 </style>

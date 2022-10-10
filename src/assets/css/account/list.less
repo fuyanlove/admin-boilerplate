@@ -1,0 +1,41 @@
+.p-account-list {
+    padding: 0 20px 20px 20px;
+
+    .m-table {
+        margin-top: 20px;
+
+        .cell {
+            white-space: nowrap;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ecf5ff;
+            color: @color;
+            .fz(12px);
+            font-weight: normal;
+        }
+
+        tbody {
+            .u-username {
+                .cell {
+                    display: flex;
+                    align-items: center;
+                    // justify-content: center;
+                    gap: 5px;
+                }
+            }
+        }
+
+        .u-avatar {
+            width: 28px;
+
+            border-radius: 50%;
+        }
+
+        .m-pagination {
+            margin-top: 20px;
+            justify-content: center;
+        }
+    }
+}

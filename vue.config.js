@@ -22,7 +22,7 @@ module.exports = {
     devServer: {
         proxy: {
             "/api/cms": {
-                target: process.env["DEV_SERVER"] == "true" ? "http://localhost:5120/" : API.cms,
+                target: process.env["DEV_SERVER"] == "true" ? "http://localhost:5120" : API.cms,
             },
         },
     },
