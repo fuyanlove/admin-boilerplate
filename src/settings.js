@@ -43,5 +43,7 @@ module.exports = {
     // Panel
     Panel: [{ title: "Test", path: "/test", disabled: true }],
 
+    tokenKey: "ADMIN_TOKEN",
+
     tokenExpires: 2592000000, // 30 days
 };

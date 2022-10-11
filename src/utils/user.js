@@ -1,7 +1,7 @@
-import { tokenExpires } from "../settings";
+import { tokenExpires, tokenKey } from "../settings";
 class User {
-    static TOKEN_KEY = "Admin_TOKEN";
-    static LAST_AUTH = "LAST_AUTH_Admin";
+    static TOKEN_KEY = tokenKey;
+    static LAST_AUTH = "LAST_AUTH_ADMIN_TOKEN";
     constructor() {
         this.profile = {};
 

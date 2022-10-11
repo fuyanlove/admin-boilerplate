@@ -7,7 +7,7 @@
 
 import { installStandardInterceptors } from "./interceptors.js";
 import axios from "axios";
-const { API } = require("@/settings.js");
+const { API, tokenKey } = require("@/settings.js");
 
 // cms通用请求接口
 function $cms(options) {
@@ -17,7 +17,7 @@ function $cms(options) {
         withCredentials: true,
         auth: {
             username: "admin",
-            password: (localStorage && localStorage.getItem("Admin_token")) || "",
+            password: (localStorage && localStorage.getItem(tokenKey)) || "",
         },
         baseURL: process.env.NODE_ENV === "production" ? domain : "/",
         headers: {},
