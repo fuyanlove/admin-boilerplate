@@ -12,6 +12,7 @@
                         remote
                         :remote-method="remoteMethod"
                         clearable
+                        @clear="clear"
                     >
                         <el-option
                             v-for="item in userList"
@@ -165,6 +166,10 @@ export default {
                 });
         },
         remoteMethod(val) {
+            if (val.length === 0) {
+                this.userList = [];
+                return;
+            }
             getAccountList({
                 search: val,
                 page: 1,
@@ -172,6 +177,9 @@ export default {
             }).then((res) => {
                 this.userList = res.data.data.list || [];
             });
+        },
+        clear() {
+            this.userList = [];
         },
     },
 };
