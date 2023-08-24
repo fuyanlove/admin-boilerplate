@@ -19,6 +19,15 @@ export default [
                 },
             },
             {
+                path: "user-action-log",
+                name: "user-action-log",
+                component: () => import("@/views/system/user-action-log.vue"),
+                meta: {
+                    title: "用户日志",
+                    icon: "log",
+                },
+            },
+            {
                 path: "upload-log",
                 name: "upload-log",
                 component: () => import("@/views/system/action-log.vue"),

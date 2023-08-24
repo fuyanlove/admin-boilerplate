@@ -74,10 +74,8 @@ export default {
     position: relative;
     overflow: hidden;
     width: 100%;
-    :deep {
-        .el-scrollbar__bar {
-            bottom: 0;
-        }
+    :deep(.el-scrollbar__bar) {
+        bottom: 0;
     }
 }
 </style>
