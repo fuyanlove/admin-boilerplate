@@ -1,0 +1,4 @@
+STATIC_PATH=/
+BASE_URL=/
+
+VUE_APP_CMS_API=https://cms.iruxu.com

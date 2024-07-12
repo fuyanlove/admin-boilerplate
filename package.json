@@ -3,9 +3,13 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "serve": "vue-cli-service serve",
+        "serve": "vue-cli-service serve --mode serve",
+        "preview": "cross-env DEV_SERVER=true vue-cli-service serve --mode preview",
         "dev": "cross-env DEV_SERVER=true vue-cli-service serve",
-        "build": "vue-cli-service build",
+        "debug": "cross-env DEV_SERVER=true vue-cli-service serve --mode staging",
+        "build": "vue-cli-service build --mode production",
+        "build-preview": "vue-cli-service build --mode preview",
+        "build-dev": "vue-cli-service build --mode development",
         "lint": "vue-cli-service lint",
         "prepare": "husky install"
     },
