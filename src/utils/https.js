@@ -8,6 +8,7 @@
 import { installStandardInterceptors } from "./interceptors.js";
 import axios from "axios";
 const { API, tokenKey } = require("@/settings.js");
+import User from "./user";
 
 // cms通用请求接口
 function $cms(options) {
@@ -15,12 +16,10 @@ function $cms(options) {
     let config = {
         // 同时发送cookie和basic auth
         withCredentials: true,
-        auth: {
-            username: "admin",
-            password: (localStorage && localStorage.getItem(tokenKey)) || "",
+        headers: {
+            Authorization: "Bearer " + User.getToken(),
         },
         baseURL: process.env.NODE_ENV === "production" ? domain : "/",
-        headers: {},
     };
 
     // 创建实例
